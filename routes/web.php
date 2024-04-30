@@ -90,3 +90,13 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
 });
+
+//Manager Routes list
+Route::middleware(['auth', 'user-access:manager'])->group(function () {
+    Route::get('manager/dashboard', [DashboardController::class, 'managerDashboard'])->name('manager.dashboard');
+});
+
+//Tour Guide Routes list
+Route::middleware(['auth', 'user-access:tourGuide'])->group(function () {
+    Route::get('tourGuide/dashboard', [DashboardController::class, 'tourGuideDashboard'])->name('tourGuide.dashboard');
+});

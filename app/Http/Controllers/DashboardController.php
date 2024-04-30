@@ -21,4 +21,12 @@ class DashboardController extends Controller
     {
         return view('admin.dashboard');
     }
+    public function managerDashboard()
+    {
+        return view('manager.dashboard');
+    }
+    public function tourGuideDashboard()
+    {
+        return view('tourGuide.dashboard');
+    }
 }

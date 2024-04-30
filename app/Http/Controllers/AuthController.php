@@ -46,29 +46,35 @@ class AuthController extends Controller
     }
  
     public function loginAction(Request $request)
-    {
-        Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ])->validate();
- 
-        if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed')
-            ]);
-        }
- 
-        $request->session()->regenerate();
- 
-        if (auth()->user()->type == 'admin') {
-            return redirect()->route('admin.dashboard');
-        } else {
-            return redirect()->route('user.dashboard');
-        }
-         
-        // return redirect()->route('dashboard');
+{
+    Validator::make($request->all(), [
+        'email' => 'required|email',
+        'password' => 'required'
+    ])->validate();
+
+    if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        throw ValidationException::withMessages([
+            'email' => trans('auth.failed')
+        ]);
     }
- 
+
+    $request->session()->regenerate();
+
+    $user = auth()->user();
+
+    // Check user type and redirect accordingly
+    switch ($user->type) {
+        case 'admin':
+            return redirect()->route('admin.dashboard');
+        case 'manager':
+            return redirect()->route('manager.dashboard');
+        case 'tourGuide':
+            return redirect()->route('tourGuide.dashboard');
+        default:
+            return redirect()->route('user.dashboard');
+    }
+}
+
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();
