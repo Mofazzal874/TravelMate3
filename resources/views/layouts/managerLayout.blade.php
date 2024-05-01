@@ -20,16 +20,16 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('home') }}">
                         <span class="icon">
                             <ion-icon name="compass-outline"></ion-icon>
                         </span>
                         <span class="title">TravelMate</span>
                     </a>
-                </li>
+                </li>                
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.dashboard')}}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -42,7 +42,7 @@
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
-                        <span class="title">Customers</span>
+                        <span class="title">Profile</span>
                     </a>
                 </li>
 
@@ -58,32 +58,32 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
+                            <ion-icon name="planet-outline"></ion-icon>
                         </span>
-                        <span class="title">Help</span>
+                        <span class="title">Places</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
+                            <ion-icon name="bed-outline"></ion-icon>
                         </span>
-                        <span class="title">Settings</span>
+                        <span class="title">Hotels</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <ion-icon name="person-outline"></ion-icon>
                         </span>
-                        <span class="title">Password</span>
+                        <span class="title">TourGuides</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('logout')}}">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -114,7 +114,7 @@
 
                     <button data-dropdown class="flex items-center px-3 py-2 focus:outline-none hover:bg-gray-200 hover:rounded-md" type="button" x-data="{ open: false }" @click="open = true" :class="{ 'bg-gray-200 rounded-md': open }">
                         <img src="{{ asset('assets/imgs/customer01.jpg') }}" alt="Profile" class="h-8 w-8 rounded-full">
-                        <span class="ml-4 text-sm hidden md:inline-block">Cairocoders</span>
+                        <span class="ml-4 text-sm hidden md:inline-block">Mofazzal Hosen</span>
                         <ion-icon name="chevron-down-outline" class="w-5 ml-2"></ion-icon>
                     
                         <div data-dropdown-items class="text-sm text-left absolute top-0 right-0 mt-16 mr-4 bg-white rounded border border-gray-400 shadow" x-show="open" @click.away="open = false">

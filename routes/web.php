@@ -29,7 +29,7 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutusController::class, 'index']);
 Route::get('/tour', [TourController::class, 'index']);
 Route::get('/tourSingle', [TourSingleController::class, 'index']);
