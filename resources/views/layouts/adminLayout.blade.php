@@ -38,7 +38,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.profile')}}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -56,7 +56,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.places')}}">
                         <span class="icon">
                             <ion-icon name="planet-outline"></ion-icon>
                         </span>

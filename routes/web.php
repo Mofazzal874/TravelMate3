@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 //frontend controllers 
 use App\Http\Controllers\Frontend\HomeController;
@@ -16,7 +16,11 @@ use App\Http\Controllers\Frontend\TourSingleController;
 
 //backend controllers
 use App\Http\Controllers\AuthController;
+
 use App\Http\Controllers\DashboardController;
+
+//admin page controllers
+use App\Http\Controllers\PlacesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +93,19 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 //Admin Routes list
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
+    Route::get('admin/profile' , [AdminController::class , 'profilePage'])->name('admin.profile') ; 
+    Route::get('admin/places' , [PlacesController::class , 'index'])->name('admin.places') ;
+    Route::get('admin/places/create' , [PlacesController::class , 'create'])->name('admin.places.create') ;  //C -Create
+    Route::post('admin/places/store' , [PlacesController::class , 'store'])->name('admin.places.store') ;    //S-Storing after creating..where to go after creating and storing will be defind in store method of PlacesController
+
+    Route::get('admin/places/show/{id}' , [PlacesController::class , 'show'])->name('admin.places.show') ;  //R-Read
+
+    Route::get('admin/places/edit/{id}' , [PlacesController::class , 'edit'])->name('admin.places.edit') ;   //U-Update
+    
+    Route::put('admin/places/edit/{id}' , [PlacesController::class , 'update'])->name('admin.places.update') ;//U-Update..Be careful with put method here
+
+    Route::delete('admin/places/destroy/{id}' , [PlacesController::class , 'destroy'])->name('admin.places.destroy') ;  //D-Delete
+    
 });
 
 //Manager Routes list
