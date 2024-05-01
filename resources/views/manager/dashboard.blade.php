@@ -3,7 +3,21 @@
 @section('title', 'Laravel 10 Login SignUp with User Roles and Permissions with Admin CRUD | Tailwind CSS Custom Login register')
  
 @section('contents')
-<div>
-    <h1 class="font-bold text-2xl ml-3">Dashboard</h1>
-</div>
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-gray-900">
+            Dashboard
+        </h1>
+    </div>
+</header>
+<hr />
+<main>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
+                Manager Dashboard
+            </div>
+        </div>
+    </div>
+</main>
 @endsection
