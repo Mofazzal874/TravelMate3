@@ -56,7 +56,7 @@
                         {{ $rs->placeStatus }}
                     </td>
                     <td>
-                        {{ $rs->bestFor }}
+                        <img src="data:image/jpeg;base64,{{ base64_encode($rs->imageURL) }}" />
                     </td>
                     <td class="w-36">
                         <div class="h-14 pt-5">

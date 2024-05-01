@@ -30,11 +30,57 @@ class PlacesController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-        Places::create($request->all());
-        return redirect()->route('admin.places')->with('success', 'Place created successfully.');
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'city' => 'required|string|max:255',
+        'country' => 'required|string|max:255',
+        'phone' => 'required|string|max:20',
+        'email' => 'required|string|email|max:255',
+        'website' => 'nullable|string|max:255',
+        'latitude' => 'nullable|string|max:20',
+        'longitude' => 'nullable|string|max:20',
+        'description' => 'nullable|string',
+        'minDuration' => 'required|string',
+        'price' => 'required|string',
+        'rating' => 'required|string',
+        'placeStatus' => 'required|boolean',
+        'imageURL' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules for image upload
+    ]);
+
+    // Check if image file is present in the request
+    if ($request->hasFile('imageURL')) {
+        // Retrieve the image from the request and convert it to a binary string
+        $image = $request->file('imageURL')->openFile()->fread($request->file('imageURL')->getSize());
+    } else {
+        $image = null; // Set image to null if no file is uploaded
     }
+
+    // Create a new place with the validated data and image
+    Places::create([
+        'name' => $validatedData['name'],
+        'address' => $validatedData['address'],
+        'city' => $validatedData['city'],
+        'country' => $validatedData['country'],
+        'phone' => $validatedData['phone'],
+        'email' => $validatedData['email'],
+        'website' => $validatedData['website'],
+        'latitude' => $validatedData['latitude'],
+        'longitude' => $validatedData['longitude'],
+        'description' => $validatedData['description'],
+        'minDuration' => $validatedData['minDuration'],
+        'price' => $validatedData['price'],
+        'rating' => $validatedData['rating'],
+        'placeStatus' => $validatedData['placeStatus'],
+        'imageURL' => $image, // Save the binary image data into 'imageURL' column
+
+    ]);
+
+    // Redirect or return a response
+    return redirect()->route('admin.places')->with('success', 'Place created successfully!');
+}
 
     /**
      * Display the specified resource.
