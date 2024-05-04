@@ -12,53 +12,44 @@
         {{ Session::get('success') }}
     </div>
     @endif
- 
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table id="places-table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-collapse rounded-lg overflow-hidden">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">Place Name</th>
-                <th scope="col" class="px-6 py-3">City</th>
-                <th scope="col" class="px-6 py-3">Phone</th>
-                <th scope="col" class="px-6 py-3">Minimum Duration</th>
-                <th scope="col" class="px-6 py-3">Price</th>
-                <th scope="col" class="px-6 py-3">Rating</th>
-                <th scope="col" class="px-6 py-3">PlaceStatus</th>
-                <th scope="col" class="px-6 py-3">BestFor</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">ID</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">Place Name</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">City/Area</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">Phone</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">Minimum Duration</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">Price</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">Rating</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">PlaceStatus</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">BestFor</th>
+                <th scope="col" class="px-6 py-3 border border-gray-300">Actions</th>
             </tr>
         </thead>
         <tbody>
             {{-- $place object has come from the PlacesController index method --}}
             @if($places->count() > 0)
                 @foreach($places as $rs)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    {{-- <th scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $loop->iteration }}
-                    </th> --}}
-                    <td>
-                        {{ $rs->name }}
+                <tr class="bg-white dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-gray-600">
+                    <td class="px-6 py-4 border border-gray-300">{{ $rs->id }}</td>
+                    <td class="px-6 py-4 border border-gray-300">{{ $rs->name }}</td>
+                    <td class="px-6 py-4 border border-gray-300">{{ $rs->city }}</td>
+                    <td class="px-6 py-4 border border-gray-300">{{ $rs->phone ?? 'N/A' }}</td>
+                    <td class="px-6 py-4 border border-gray-300">{{ $rs->minDuration }}</td>
+                    <td class="px-6 py-4 border border-gray-300">{{ $rs->price }}</td>
+                    <td class="px-6 py-4 border border-gray-300">{{ $rs->rating }}</td>
+                    <td class="px-6 py-4 border border-gray-300">
+                        @if($rs->placeStatus == 0)
+                            General
+                        @elseif($rs->placeStatus == 1)
+                            Top destination
+                        @elseif($rs->placeStatus == 2)
+                            Best Deal Destination
+                        @endif
                     </td>
-                    <td>
-                        {{ $rs->city }}
-                    </td>
-                    <td>
-                        {{ $rs->phone }}
-                    </td>
-                    <td>
-                        {{ $rs->minDuration }}
-                    </td>
-                    <td>
-                        {{ $rs->price }}
-                    </td>
-                    <td>
-                        {{ $rs->rating }}
-                    </td>
-                    <td>
-                        {{ $rs->placeStatus }}
-                    </td>
-                    <td>
-                        <img src="data:image/jpeg;base64,{{ base64_encode($rs->imageURL) }}" />
-                    </td>
-                    <td class="w-36">
+                    <td class="px-6 py-4 border border-gray-300">{{ $rs->placeType ?? 'N/A' }}</td>
+                    <td class="px-6 py-4 border border-gray-300">
                         <div class="h-14 pt-5">
                             <a href="{{ route('admin.places.show', $rs->id) }}" class="text-blue-800">Detail</a> |
                             <a href="{{ route('admin.places.edit', $rs->id)}}" class="text-green-800 pl-2">Edit</a> |
@@ -73,7 +64,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td class="text-center" colspan="5">Product not found</td>
+                    <td class="text-center border border-gray-300" colspan="5">Product not found</td>
                 </tr>
             @endif
         </tbody>

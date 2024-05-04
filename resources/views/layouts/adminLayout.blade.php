@@ -8,8 +8,26 @@
     <title>@yield('title')</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('assets/css/app.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css')}}">
     <link href="{{asset('https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css')}}" rel="stylesheet" />
+    <style>
+        /* Custom Styles */
+        .main {
+            margin-left: 10px; /* Adjust the left margin to move the table slightly right from the navigation bar */
+        }
+
+        .rounded-button {
+            border-radius: 999px; /* Make the buttons rounded */
+            padding: 8px 16px; /* Adjust padding as needed */
+            background-color: #4CAF50; /* Set the background color */
+            color: white; /* Set text color to white */
+        }
+
+        .rounded-button:hover {
+            background-color: #45a049; /* Change the background color on hover */
+        }
+    </style>
 
     
 </head>
@@ -151,13 +169,12 @@
         </div>
     </div>
 
-    <!-- =========== Scripts =========  -->
-    <script src="{{asset('assets/js/main.js')}}"></script>
-    <script src="{{asset('https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js')}}"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="{{asset('https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')}}"></script>
-    <script nomodule src="{{asset('https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')}}"></script>
+     <!-- =========== Scripts =========  -->
+     <script src="{{asset('assets/js/main.js')}}"></script>
+     <script src="{{asset('https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js')}}"></script>
+     <!-- ====== ionicons ======= -->
+     <script type="module" src="{{asset('https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')}}"></script>
+     <script nomodule src="{{asset('https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')}}"></script>
 </body>
 
 </html>
