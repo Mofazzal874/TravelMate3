@@ -11,6 +11,7 @@
     {{-- <link rel="stylesheet" href="{{asset('assets/css/app.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css')}}">
     <link href="{{asset('https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css')}}" rel="stylesheet" />
+    @yield('css')
     <style>
         /* Custom Styles */
         .main {
@@ -135,11 +136,8 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+                <div>
+                    @yield('pageTitle')
                 </div>
 
                 <div class="flex items-center">
@@ -166,15 +164,16 @@
                 </div>
             </div>
             @yield('contents')
+            
         </div>
     </div>
-
      <!-- =========== Scripts =========  -->
      <script src="{{asset('assets/js/main.js')}}"></script>
      <script src="{{asset('https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js')}}"></script>
      <!-- ====== ionicons ======= -->
      <script type="module" src="{{asset('https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')}}"></script>
      <script nomodule src="{{asset('https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')}}"></script>
+     @stack('scripts')
 </body>
 
 </html>

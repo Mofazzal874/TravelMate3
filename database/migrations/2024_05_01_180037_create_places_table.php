@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('website')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
-            $table->binary('imageURL');
+            $table->string('imageURL')->nullable();
             $table->text('description');
             $table->string('minDuration') ;
             $table->string('opening_hours')->nullable();

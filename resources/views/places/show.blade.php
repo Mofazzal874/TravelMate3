@@ -21,7 +21,7 @@
                         <div class="col-span-12 xl:col-span-4">
                             <div class="border border-gray-200 rounded-md p-5">
                                 <div class="w-40 h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                    <img class="rounded-md" alt="TravelMate Image" src="data:image/jpeg;base64,{{ base64_encode($places->imageURL) }}">
+                                    <img class="rounded-md" alt="TravelMate Image" src="{{$places->imageURL ? asset('storage/' . $places->imageURL) : ''}}">
                                 </div>
                                 <div class="w-40 mx-auto cursor-pointer relative mt-5">
                                     <button type="button" class="button w-full bg-theme-1 text-white">{{$places->name}} Photo  </button>
@@ -60,11 +60,11 @@
                             </div>
                             <div>
                                 <label>What Type of Destination is this?</label>
-                                <input type="text" class="input w-full border bg-gray-100 cursor-not-allowed mt-2" placeholder="Input text" value="{{$places->placeStatus}}" disabled>
+                                <input type="text" class="input w-full border bg-gray-100 cursor-not-allowed mt-2" placeholder="Input text" value="{{ $places->placeStatus == 0 ? 'General' : ($places->placeStatus == 1 ? 'Top Destination' : 'Best Destination') }}" disabled>
                             </div>
                             <div>
                                 <label>This place is best for </label>
-                                <input type="text" class="input w-full border bg-gray-100 cursor-not-allowed mt-2" placeholder="Input text" value="{{$places->placeType}}" disabled>
+                                <input type="text" class="input w-full border bg-gray-100 cursor-not-allowed mt-2" placeholder="Input text" value="{{ $places->placeType ?? 'N/A' }}" disabled>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Places;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlacesController extends Controller
 {
@@ -31,7 +32,7 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
 {
-    // Validate the incoming request data
+    // Validate the incoming request data 
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
         'address' => 'nullable|string|max:255',
@@ -43,8 +44,7 @@ class PlacesController extends Controller
         'website' => 'nullable|string|max:255',
         'latitude' => 'nullable|string|max:20',
         'longitude' => 'nullable|string|max:20',
-        'imageURL' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules for image upload
-        'description' => 'nullable|string',
+        'description' => 'required|string',
         'minDuration' => 'required|string',
         'openingHours' => 'nullable|string|max:20',
         'closingHours' => 'nullable|string|max:20',
@@ -57,38 +57,15 @@ class PlacesController extends Controller
 
     // Check if image file is present in the request
     if ($request->hasFile('imageURL')) {
-        // Retrieve the image from the request and convert it to a binary string
-        $image = $request->file('imageURL')->openFile()->fread($request->file('imageURL')->getSize());
-    } else {
-        $image = null; // Set image to null if no file is uploaded
-    }
+        $validatedData['imageURL'] = $request->file('imageURL')->store('images', 'public') ; // Store the image in the 'images' folder inside the 'public' disk
+    } 
 
     // Create a new place with the validated data and image
-     
-    Places::create([
-        'name' => $validatedData['name'],
-        'address' => $validatedData['address'],
-        'city' => $validatedData['city'],
-        'country' => $validatedData['country'],
-        'postal_code' => $validatedData['postalCode'],
-        'phone' => $validatedData['phone'],
-        'email' => $validatedData['email'],
-        'website' => $validatedData['website'],
-        'latitude' => $validatedData['latitude'],
-        'longitude' => $validatedData['longitude'],
-        'imageURL' => $image, // Save the binary image data into 'imageURL' column
-        'description' => $validatedData['description'],
-        'minDuration' => $validatedData['minDuration'],
-        'opening_hours' => $validatedData['openingHours'],
-        'closing_hours' => $validatedData['closingHours'],
-        'price' => $validatedData['price'],
-        'rating' => $validatedData['rating'],
-        'placeStatus' => $validatedData['placeStatus'],
-        'placeType' => $validatedData['placeType'],
-    ]);
-    dd($validatedData) ;
+    //  dd($validatedData) ;
+    Places::create($validatedData);
     
     // Redirect or return a response
+    // dd($validatedData) ;
     return redirect()->route('admin.places')->with('success', 'Place created successfully!');
 }
 
@@ -131,7 +108,6 @@ class PlacesController extends Controller
         'website' => 'nullable|string|max:255',
         'latitude' => 'nullable|string|max:20',
         'longitude' => 'nullable|string|max:20',
-        'imageURL' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'description' => 'nullable|string',
         'minDuration' => 'required|string',
         'opening_hours' => 'nullable|string|max:20',
@@ -144,12 +120,14 @@ class PlacesController extends Controller
 
     // Check if image file is present in the request
     if ($request->hasFile('imageURL')) {
-        // Retrieve the image from the request and convert it to a binary string
-        $image = $request->file('imageURL')->openFile()->fread($request->file('imageURL')->getSize());
-        // Update the imageURL attribute with the new image data
-        $places->imageURL = $image;
+        // Delete the old image if it exists
+        if ($places->imageURL) {
+            Storage::disk('public')->delete($places->imageURL);
+        }
+        // Store the new image
+        $validatedData['imageURL'] = $request->file('imageURL')->store('images', 'public');
     }
-    // Update other attributes with the validated data
+     
     $places->update($validatedData);
     return redirect()->route('admin.places')->with('success', 'Place updated successfully.');
 }
@@ -158,10 +136,20 @@ class PlacesController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
-        $places = Places::findOrFail($id); //find the place in the database
-        $places->delete(); //delete the place
-        return redirect()->route('admin.places')->with('success', 'Place deleted successfully.'); //redirect to the places page
+{
+    // Find the place in the database
+    $place = Places::findOrFail($id);
+
+    // Check if the place has an associated image
+    if ($place->imageURL) {
+        // Delete the image from storage
+        Storage::disk('public')->delete($place->imageURL);
     }
+
+    // Delete the place
+    $place->delete();
+
+    // Redirect to the places page with a success message
+    return redirect()->route('admin.places')->with('success', 'Place deleted successfully.');
+}
 }

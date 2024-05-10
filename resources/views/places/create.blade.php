@@ -1,217 +1,209 @@
-@extends('layouts.adminLayout')
- 
-@section('title', 'Create New Place')
+@extends('layouts.adminLayout') 
+@section('title', 'Add a new Place')
 @section('contents')
-<h1 class="font-bold text-2xl ml-3">Add New Place</h1>
-<hr />
-<div class="border-b border-gray-900/10 pb-12">
-    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-        <form action="{{ route('admin.places.store') }}" method="POST" enctype="multipart/form-data">
+<head>
+    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" />
+</head>
+<div class="content">
+    <div class="grid grid-cols-12 gap-6">
+        <!-- BEGIN: Profile Menu -->
+        <!-- END: Profile Menu-->
+        <div class="col-span-12 lg:col-span-12 xxl:col-span-9">
+            <form action="{{ route('admin.places.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Name</label>
-                <div class="mt-2">
-                    <input type="text" name="name" id="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('name')
-                            <span id = "nameError" class="text-red-600">{{ $message}}</span>
-                    @enderror
+                <!-- BEGIN: Display Information -->
+                <div class="intro-y box lg:mt-5">
+                    <div class="flex items-center justify-center p-5 border-b border-gray-200">
+                            <h2 class="font-medium text-3xl text-center">
+                                Add Place Information
+                            </h2>
+                    </div>
+                    <div class="p-5">
+                        <div class="grid grid-cols-12 gap-5">
+                               
+                            <div class="col-span-12 xl:col-span-4">
+                                <div class="border border-gray-200 rounded-md p-5">
+                                    <div class="w-40 h-40 relative image-fit cursor-pointer zoom-in mx-auto">
+                                        <img class="rounded-md" alt="TravelMate Image" src="">
+                                    </div>
+                                    <div class="w-40 mx-auto cursor-pointer relative mt-5">
+                                        <button type="button" class="button w-full bg-theme-1 text-white">Upload Photo  </button>
+                                        <input name="imageURL" type="file" class="w-full h-full top-0 left-0 absolute opacity-0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 xl:col-span-8">
+                                <div>
+                                    <label>Name of the place </label>
+                                    <input name="name" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text" >
+                                    @error('name')
+                                    <span id="nameError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label>In City/Area</label>
+                                    <input name="city" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    @error('city')
+                                    <span id="cityError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label>Country</label>
+                                    <input name="country" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    @error('country')
+                                    <span id="countryError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label>Minimum Duration(DAY) to fully cover the place</label>
+                                    <input name="minDuration" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    @error('minDuration')
+                                    <span id="minDurationError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label>Opening Hours(__AM)</label>
+                                    <input name="opening_hours" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text" >
+                                    @error('opening_hours')
+                                    <span id="openingHoursError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label>Closing Hours(__PM)</label>
+                                    <input name="closing_hours" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    @error('closing_hours')
+                                    <span id="closingHoursError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label>Minimum Cost(Per Person)</label>
+                                    <input name="price" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    @error('price')
+                                    <span id="priceError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label>Initial Rating</label>
+                                    <input name="rating" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    @error('rating')
+                                    <span id="ratingError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label for="placeStatus">What Type of Destination is this?</label>
+                                    <div class="mt-2">
+                                        <select id="placeStatus" name="placeStatus" class="select2 w-full">
+                                            <option value="0" selected>General Destination</option>
+                                            <option value="1">Top Destination</option>
+                                            <option value="2">Best Deal Destination</option>
+                                        </select>
+                                        @error('placeStatus')
+                                        <span id="placeStatusError" class="text-red-600">{{ $message }}</span>
+                                        @enderror 
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="placeType">This place is best for</label>
+                                    <div class="mt-2">
+                                        <select name="placeType" id="placeType" class="select2 w-full">
+                                            <option value="hiking">Hiking</option>
+                                            <option value="bicycling">Bicycling</option>
+                                            <option value="treking">Treking</option>
+                                            <option value="camping">Camping</option>
+                                            <option value="wildlife">Wildlife</option>
+                                            <option value="Historical">Historical</option>
+                                            <option value="Religious">Religious</option>
+                                            <option value="Adventure">Adventure</option>
+                                        </select>
+                                        @error('placeType')
+                                        <span class="text-red-600">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Address</label>
-                <div class="mt-2">
-                    <input type="text" name="address" id= "address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('address')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>                                                                                                  
-            </div>
-            
- 
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">City</label>
-                <div class="mt-2">
-                    <input id="city" name="city" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('city')
-                            <span id="cityError" class="text-red-600">{{ $message }}</span>
-                    @enderror
+                <!-- END: Display Information -->
+                <!-- BEGIN: Contact Information -->
+                <div class="intro-y box lg:mt-5">
+                    <div class="flex items-center justify-center p-5 border-b border-gray-200">
+                        <h2 class="font-medium text-3xl text-center">
+                            Add contact Information
+                        </h2>
+                    </div>
+                    <div class="p-5">
+                        <div class="grid grid-cols-12 gap-5">
+                            <div class="col-span-12 xl:col-span-6">
+                                <div>
+                                    <label>Email</label>
+                                    <input name="email" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    @error('email')
+                                    <span id="emailError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mt-3">
+                                    <label>Postal Code</label>
+                                    <input name="postal_code" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter Postal Code">
+                                    @error('postal_code')
+                                    <span id="postalCodeError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mt-3">
+                                    <label>Website</label>
+                                    <input name="website" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter Website URL(with https://)">
+                                    @error('website')
+                                    <span id="websiteError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div> 
+                                <div class="mt-3">
+                                    <label>Description</label>
+                                    <textarea name="description" class="input w-full bg-gray-100 border mt-2" placeholder="Enter your Description"></textarea>
+                                    @error('description')
+                                    <span id="descriptionError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>                                       
+                            </div>
+                            <div class="col-span-12 xl:col-span-6">
+                                <div>
+                                    <label>Phone Number</label>
+                                    <input name="phone" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter Phone Number">
+                                    @error('phone')
+                                    <span id="phoneError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mt-3">
+                                    <label>Address</label>
+                                    <textarea name="address" class="input w-full bg-gray-100 border mt-2" placeholder="Enter your Address"></textarea>
+                                    @error('address')
+                                    <span id="addressError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label>latitude</label>
+                                    <input name="latitude" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Input text">
+                                    @error('latitude')
+                                    <span id="latitudeError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mt-3">
+                                    <label>Longitude</label>
+                                    <input name="longitude" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Input text">
+                                    @error('longitude')
+                                    <span id="longitudeError" class="text-red-600">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="button w-24 bg-theme-1 text-white mt-5">Submit</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Country</label>
-                <div class="mt-2">
-                    <input id="country" name="country" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('country')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Postal Code</label>
-                <div class="mt-2">
-                    <input id="postalCode" name="postalCode" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('postal_code')
-                            <span id = "postalCodeError" class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Phone</label>
-                <div class="mt-2">
-                    <input id="phone" name="phone" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('phone')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Email</label>
-                <div class="mt-2">
-                    <input id="email" name="email" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('email')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Website</label>
-                <div class="mt-2">
-                    <input id="website" name="website" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('website')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Latitude</label>
-                <div class="mt-2">
-                    <input id="latitude" name="latitude" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('latitude')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Longitude</label>
-                <div class="mt-2">
-                    <input id="longitude" name="longitude" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('longitude')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Image</label>
-                <div class="mt-2">
-                    <input id="imageURL" name="imageURL" type="file" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('imageURL')
-                            <span id="ImageURLError" class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Description</label>
-                <div class="mt-2">
-                    <textarea name="description" placeholder="Descriptoin" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
-                    @error('description')
-                            <span id="descriptionError" class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Minimum Duration of Tour</label>
-                <div class="mt-2">
-                    <input id="minDuration" name="minDuration" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('minDuration')
-                            <span id="MinDurationError" class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Opening Hours </label>
-                <div class="mt-2">
-                    <input id="openingHours" name="openingHours" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('opening_hours')
-                            <span  class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Closing Hours</label>
-                <div class="mt-2">
-                    <input id="closingHours" name="closingHours" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('closing_hours')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900">Price</label>
-                <div class="mt-2">
-                    <input id="price" name="price" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('price')
-                            <span id="priceError" class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label class="block text-sm font-medium leading-6 text-gray-900"> Initial Rating</label>
-                <div class="mt-2">
-                    <input id="rating" name="rating" type="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('rating')
-                            <span id ="ratingError" class="text-red-600">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label for="placeStatus" class="block text-sm font-medium leading-6 text-gray-900">Place Status</label>
-                <div class="mt-2 relative">
-                    <select id="placeStatus" name="placeStatus" class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        
-                        <option value="0" selected>General Destination</option>
-                        <option value="1">Top Destination</option>
-                        <option value="2">Best Deal Destination</option>
-                        @error('placeStatus')
-                            <span id="placeStatusError" class="text-red-600">{{ $message }}</span>
-                    @enderror 
-                    </select>
-                </div>
-            </div>
-            <div class="sm:col-span-4">
-                <label for="placeType" class="block text-sm font-medium leading-6 text-gray-900">Best Place For</label>
-                <div class="mt-2 relative">
-                    <select id="placeType" name="placeType" class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="hiking">Hiking</option>
-                        <option value="Bicycling">Bicycling</option>
-                        <option value="Treking">Treking</option>
-                        <option value="Camping">Camping</option>
-                        <option value="Sightseeing">Sightseeing</option>
-                        <option value="Photography">Photography</option>
-                        <option value="Bird Watching">Bird Watching</option>
-                        <option value="Wildlife">Wildlife</option>
-                        <option value="Cultural">Cultural</option>
-                        <option value="Historical">Historical</option>
-                        <option value="Religious">Religious</option>
-                        <option value="Adventure">Adventure</option>
-                        <option value="Family">Family</option>
-                        <option value="Romantic">Romantic</option>
-                        <option value="Solo">Solo</option>
-                        <option value="Group">Group</option>
-                        <option value="Couple">Couple</option>
-                        <option value="Friends">Friends</option>
-                        <option value="Business">Rope Climbing</option>
-                        @error('placeStatus')
-                            <span class="text-red-600">{{ $message }}</span>
-                    @enderror
-                    </select>
-                </div>
-            </div>
-            
-            <button type="submit" id="submitBtn" class="flex w-full justify-center mt-10 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
-        </form>
+                <!-- END: Personal Information -->
+            </form>
+        </div>
     </div>
 </div>
-
+    <!-- BEGIN: JS Assets-->
+    <script src="{{asset('assets/js/app.js')}}"></script>
+    <!-- END: JS Assets-->
 @endsection
-
