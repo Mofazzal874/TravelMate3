@@ -92,8 +92,12 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
 //Admin Routes list
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
+    
     Route::get('admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
-    Route::get('admin/profile' , [AdminController::class , 'profilePage'])->name('admin.profile') ; 
+    Route::get('admin/dashboard/edit/{id}', [AdminController::class, 'editProfile'])->name('admin.profile.edit');
+    Route::put('admin/dashboard/edit/{id}', [AdminController::class, 'UpdateProfile'])->name('admin.profile.update');
+    
+
     Route::get('admin/places' , [PlacesController::class , 'index'])->name('admin.places') ;
     Route::get('admin/places/create' , [PlacesController::class , 'create'])->name('admin.places.create') ;  //C -Create
     Route::post('admin/places/store' , [PlacesController::class , 'store'])->name('admin.places.store') ;    //S-Storing after creating..where to go after creating and storing will be defind in store method of PlacesController

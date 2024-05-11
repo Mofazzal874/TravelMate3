@@ -1,5 +1,8 @@
 @extends('layouts.adminLayout') 
 @section('title', 'Update {{$places->name}} Information')
+@section('pageTitle')
+<h1 class="font-bold text-2xl ml-3">Update {{$places->name}} Information</h1>
+@endsection
 @section('contents')
 <head>
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" />

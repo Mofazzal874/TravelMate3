@@ -1,5 +1,8 @@
 @extends('layouts.adminLayout') 
 @section('title', 'Add a new Place')
+@section('pageTitle')
+<h1 class="font-bold text-2xl ml-3">Add a new Place</h1>
+@endsection
 @section('contents')
 <head>
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" />
@@ -35,56 +38,56 @@
                             <div class="col-span-12 xl:col-span-8">
                                 <div>
                                     <label>Name of the place </label>
-                                    <input name="name" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text" >
+                                    <input name="name" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter the name of the place">
                                     @error('name')
                                     <span id="nameError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div>
                                     <label>In City/Area</label>
-                                    <input name="city" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    <input name="city" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter the city/area">
                                     @error('city')
                                     <span id="cityError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div>
                                     <label>Country</label>
-                                    <input name="country" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    <input name="country" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter the country">
                                     @error('country')
                                     <span id="countryError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div>
                                     <label>Minimum Duration(DAY) to fully cover the place</label>
-                                    <input name="minDuration" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    <input name="minDuration" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter minimum duration in days">
                                     @error('minDuration')
                                     <span id="minDurationError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div>
                                     <label>Opening Hours(__AM)</label>
-                                    <input name="opening_hours" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text" >
+                                    <input name="opening_hours" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter opening hours">
                                     @error('opening_hours')
                                     <span id="openingHoursError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div>
                                     <label>Closing Hours(__PM)</label>
-                                    <input name="closing_hours" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    <input name="closing_hours" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter closing hours">
                                     @error('closing_hours')
                                     <span id="closingHoursError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div>
                                     <label>Minimum Cost(Per Person)</label>
-                                    <input name="price" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    <input name="price" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter minimum cost per person">
                                     @error('price')
                                     <span id="priceError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div>
                                     <label>Initial Rating</label>
-                                    <input name="rating" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    <input name="rating" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter initial rating">
                                     @error('rating')
                                     <span id="ratingError" class="text-red-600">{{ $message }}</span>
                                     @enderror
@@ -137,28 +140,28 @@
                             <div class="col-span-12 xl:col-span-6">
                                 <div>
                                     <label>Email</label>
-                                    <input name="email" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Input text">
+                                    <input name="email" type="text" class="input w-full border bg-gray-100 mt-2" placeholder="Enter email">
                                     @error('email')
                                     <span id="emailError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="mt-3">
                                     <label>Postal Code</label>
-                                    <input name="postal_code" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter Postal Code">
+                                    <input name="postal_code" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter postal code">
                                     @error('postal_code')
                                     <span id="postalCodeError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="mt-3">
                                     <label>Website</label>
-                                    <input name="website" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter Website URL(with https://)">
+                                    <input name="website" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter website URL (with https://)">
                                     @error('website')
                                     <span id="websiteError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div> 
                                 <div class="mt-3">
                                     <label>Description</label>
-                                    <textarea name="description" class="input w-full bg-gray-100 border mt-2" placeholder="Enter your Description"></textarea>
+                                    <textarea name="description" class="input w-full bg-gray-100 border mt-2" placeholder="Enter description"></textarea>
                                     @error('description')
                                     <span id="descriptionError" class="text-red-600">{{ $message }}</span>
                                     @enderror
@@ -167,28 +170,28 @@
                             <div class="col-span-12 xl:col-span-6">
                                 <div>
                                     <label>Phone Number</label>
-                                    <input name="phone" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter Phone Number">
+                                    <input name="phone" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter phone number">
                                     @error('phone')
                                     <span id="phoneError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="mt-3">
                                     <label>Address</label>
-                                    <textarea name="address" class="input w-full bg-gray-100 border mt-2" placeholder="Enter your Address"></textarea>
+                                    <textarea name="address" class="input w-full bg-gray-100 border mt-2" placeholder="Enter address"></textarea>
                                     @error('address')
                                     <span id="addressError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div>
                                     <label>latitude</label>
-                                    <input name="latitude" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Input text">
+                                    <input name="latitude" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter latitude">
                                     @error('latitude')
                                     <span id="latitudeError" class="text-red-600">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="mt-3">
                                     <label>Longitude</label>
-                                    <input name="longitude" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Input text">
+                                    <input name="longitude" type="text" class="input w-full bg-gray-100 border mt-2" placeholder="Enter longitude">
                                     @error('longitude')
                                     <span id="longitudeError" class="text-red-600">{{ $message }}</span>
                                     @enderror

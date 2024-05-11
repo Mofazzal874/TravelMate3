@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,9 +20,12 @@ class DashboardController extends Controller
     }
  
     public function adminDashboard()
-    {
-        return view('admin.dashboard');
-    }
+{
+    $profile = User::findOrFail(auth()->user()->id);
+    return view('admin.profile.dashboard', compact('profile'));
+}
+
+
     public function managerDashboard()
     {
         return view('manager.dashboard');

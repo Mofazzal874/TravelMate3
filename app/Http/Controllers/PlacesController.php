@@ -14,7 +14,7 @@ class PlacesController extends Controller
     public function index()
     {
         $places = Places::orderBy('created_at', 'desc')->get();
-        return view('places.index' , compact('places'));
+        return view('admin.places.index' , compact('places'));
     }
 
     /**
@@ -24,7 +24,7 @@ class PlacesController extends Controller
     {
         //
         
-        return view('places.create') ; 
+        return view('admin.places.create') ; 
     }
 
     /**
@@ -76,7 +76,7 @@ class PlacesController extends Controller
     {
         //
         $places = Places::findOrFail($id);
-        return view('places.show' , compact('places'));
+        return view('admin.places.show' , compact('places'));
     }
 
     /**
@@ -86,7 +86,7 @@ class PlacesController extends Controller
     {
         //
         $places = Places::findOrFail($id);
-        return view('places.edit' , compact('places'));
+        return view('admin.places.edit' , compact('places'));
     }
 
     /**

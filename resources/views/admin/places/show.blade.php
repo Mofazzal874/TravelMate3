@@ -1,5 +1,8 @@
 @extends('layouts.adminLayout') 
 @section('title', 'Show All Places')
+@section('pageTitle')
+<h1 class="font-bold text-2xl ml-3">Place Information</h1>
+@endsection
 @section('contents')
 <head>
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" />
@@ -131,7 +134,6 @@
                     </div>
                 </div>
             </div>
-            <!-- END: Personal Information -->
         </div>
     </div>
 </div>
