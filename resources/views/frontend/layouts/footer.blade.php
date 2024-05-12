@@ -240,13 +240,15 @@
     </div>
 </div>
 
+
+@yield('scripts')
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="{{ url('frontend/js/jquery-3.5.1.min.js')}}"></script>
 <script src="{{ url('frontend/js/bootstrap.min.js') }}"></script>
-<script src="{{ url('frontend/js/particles.js') }}"></script>
-<script src="{{ url('frontend/js/particlerun.js') }}"></script>
-<script src="{{ url('frontend/js/plugin.js') }}"></script>
-<script src="{{ url('frontend/js/main.js') }}"></script>
+{{-- <script src="{{ url('frontend/js/particles.js') }}"></script>
+<script src="{{ url('frontend/js/particlerun.js') }}"></script> --}}
+{{-- <script src="{{ url('frontend/js/plugin.js') }}"></script> --}}
+{{-- <script src="{{ url('frontend/js/main.js') }}"></script> --}}
 <script src="{{ url('frontend/js/custom-swiper.js') }}"></script>
 <script src="{{ url('frontend/js/custom-nav.js') }}"></script>
 

@@ -56,7 +56,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.messages')}}">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
@@ -147,9 +147,6 @@
                             </ul>
                         </div>
                     </button>
-                    
-                    
-     
                 </div>
             </div>
             @yield('contents')

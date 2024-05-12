@@ -1169,8 +1169,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 </div>
 </div>
 </section>
-
-
-
 @endsection
 

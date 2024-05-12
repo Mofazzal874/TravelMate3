@@ -25,7 +25,7 @@
     <div class="container">
     <div class="section-title mb-6 w-50 mx-auto text-center">
     <h4 class="mb-1 theme1">Top Destinations</h4>
-    <h2 class="mb-1">Explore <span class="theme">Top Destinations</span></h2>
+    <h2 class="mb-1">Explore<span class="theme">Top Destinations</span></h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
     </div>
     <div class="row align-items-center">
