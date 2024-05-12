@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Message;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +17,7 @@ class AdminController extends Controller
         $profile = User::findOrFail(auth()->user()->id);
         return view('admin.profile.edit', compact('profile'));
     }
-    
+
 
     public function updateProfile(Request $request, string $id)
     {
@@ -61,5 +62,22 @@ class AdminController extends Controller
         $profile->update($validatedData);
 
         return redirect()->route('admin.dashboard')->with('success', 'Profile updated successfully.');
+    }
+
+    public function messages()
+    {
+        // Retrieve messages where the recipient role is admin
+        $messages = Message::where('recipient_role', 'admin')->get();
+
+        // Pass the messages data to the view
+        return view('admin.messages.index', compact('messages'));
+    }
+    public function deleteMessage(string $id)
+    {
+        // Find the message by ID
+        $message = Message::findOrFail($id);
+        // Delete the message
+        $message->delete();
+        return redirect()->route('admin.messages')->with('success', 'Message deleted successfully.');
     }
 }

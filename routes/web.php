@@ -1,26 +1,29 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 //frontend controllers 
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\AboutusController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PlacesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Frontend\BlogController;
-use App\Http\Controllers\Frontend\BookingController;
-use App\Http\Controllers\Frontend\DestinationController;
-use App\Http\Controllers\Frontend\DestinationDetailController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\TourController;
-use App\Http\Controllers\Frontend\TourSingleController;
+use App\Http\Controllers\Frontend\AboutusController;
+
+
 
 
 //backend controllers
-use App\Http\Controllers\AuthController;
-
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Frontend\BookingController;
+use App\Http\Controllers\Frontend\TourSingleController;
 
 //admin page controllers
-use App\Http\Controllers\PlacesController;
+use App\Http\Controllers\Frontend\DestinationController;
+use App\Http\Controllers\Frontend\DestinationDetailController;
+
+use App\Http\Controllers\Frontend\ContactAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,9 +59,9 @@ Route::get('/gallery', function () {
     return view('frontend.gallery');
 });
 
-Route::get('/contact', function () {
-    return view('frontend.contactus');
-});
+Route::get('/contact', function () { return view('frontend.contactus'); });
+//send message to admin (both user and unregistered user can send message)
+Route::post('/send-message', [ContactAdminController::class, 'sendMessage'])->name('send.message');
 
 Route::get('/blog', function () {
     return view('frontend.blog');
@@ -70,6 +73,8 @@ Route::get('/blog-detail', function () {
 Route::get('/test', function () {
     return view('frontend.test');
 });
+
+
 
 
 
@@ -97,6 +102,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/dashboard/edit/{id}', [AdminController::class, 'editProfile'])->name('admin.profile.edit');
     Route::put('admin/dashboard/edit/{id}', [AdminController::class, 'UpdateProfile'])->name('admin.profile.update');
     
+    Route::get('admin/messages', [AdminController::class, 'messages'])->name('admin.messages');
+    Route::delete('admin/messages/delete/{id}', [AdminController::class, 'deleteMessage'])->name('admin.messages.delete');
 
     Route::get('admin/places' , [PlacesController::class , 'index'])->name('admin.places') ;
     Route::get('admin/places/create' , [PlacesController::class , 'create'])->name('admin.places.create') ;  //C -Create
