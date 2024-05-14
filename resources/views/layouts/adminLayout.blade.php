@@ -83,7 +83,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.tourGuides')}}">
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon>
                         </span>
@@ -91,7 +91,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.updateRole')}}">
                         <span class="icon">
                             <ion-icon name="arrow-up-outline"></ion-icon>
                         </span>

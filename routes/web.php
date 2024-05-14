@@ -116,7 +116,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::put('admin/places/edit/{id}' , [PlacesController::class , 'update'])->name('admin.places.update') ;//U-Update..Be careful with put method here
 
     Route::delete('admin/places/destroy/{id}' , [PlacesController::class , 'destroy'])->name('admin.places.destroy') ;  //D-Delete
+
+    Route::get('admin/tourGuides', [AdminController::class, 'showTourGuides'])->name('admin.tourGuides');
+    Route::get('admin/tourGuides/show/{id}', [AdminController::class, 'TourGuideDetails'])->name('admin.tourGuides.show');
+    Route::delete('admin/tourGuides/destroy/{id}', [AdminController::class, 'deleteTourGuides'])->name('admin.tourGuides.destroy');
+
     
+    Route::get('admin/updateRole', [AdminController::class, 'showUpdateRole'])->name('admin.updateRole');
+    Route::post('admin/updateRole/{id}', [AdminController::class, 'updateRole'])->name('admin.updateRole.update'); 
+    Route::delete('admin/updateRole/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.updateRole.destroy');
 });
 
 //Manager Routes list
