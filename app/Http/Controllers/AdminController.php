@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Profile;
+use App\Models\TourGuide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -74,10 +75,93 @@ class AdminController extends Controller
     }
     public function deleteMessage(string $id)
     {
+        
         // Find the message by ID
         $message = Message::findOrFail($id);
         // Delete the message
         $message->delete();
         return redirect()->route('admin.messages')->with('success', 'Message deleted successfully.');
     }
+
+    public function showTourGuides()
+    {
+        // Retrieve all tour guides
+        
+        $tourGuides = TourGuide::all() ; 
+        // Pass the tour guides data to the view
+        return view('admin.tourGuides.index', compact('tourGuides'));
+    }
+    public function TourGuideDetails(string $id)
+    {
+        // Find the tour guide by ID
+        $tourGuide = TourGuide::findOrFail($id);
+        $user = User::findOrFail($tourGuide->userId);
+        // Pass the tour guide data to the view
+        return view('admin.tourGuides.show', compact('tourGuide' , 'user'));
+    }
+
+    public function deleteTourGuides(string $id){
+        // Find the tour guide by ID
+        $tourGuide = TourGuide::findOrFail($id);
+        // Delete the tour guide
+        $tourGuide->delete();
+        return redirect()->route('admin.tourGuides')->with('success', 'Tour guide deleted successfully.');
+    }
+    public function showUpdateRole()
+    {
+        // Retrieve all users
+        $users = User::all();
+        // Pass the users data to the view
+        return view('admin.updateRole.index', compact('users'));
+    }
+    public function updateRole(Request $request, string $id)
+    {
+        // Find the user by ID
+        $user = User::findOrFail($id);
+    
+        // Check if the current user type is "admin"
+        if ($user->type === 'admin') {
+            return redirect()->route('admin.updateRole')->with('error', 'Cannot update role for admin user.');
+        }
+    
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'type' => 'required|string|in:user,admin,manager,tourGuide',
+        ]);
+    
+        // Map role string to its numerical representation
+        $roleValue = array_search($validatedData['type'], ["user", "admin", "manager", "tourGuide"]);
+    
+        // Update the user role
+        $user->update(['type' => $roleValue]);
+    
+        // If the new role is 'tourGuide', insert a record into the tour_guides table
+        if ($roleValue === array_search('tourGuide', ["user", "admin", "manager", "tourGuide"])) {
+            TourGuide::create([
+                'userId' => $user->id,
+                // Add any additional fields you need to populate
+            ]);
+        }
+    
+        return redirect()->route('admin.updateRole')->with('success', 'User role updated successfully.');
+    }
+    
+    
+
+
+    public function deleteUser(string $id)
+    {
+        // Find the user by ID
+        $user = User::findOrFail($id);
+        // Check if the user type is "admin"
+        if ($user->type === 'admin') {
+            return redirect()->route('admin.updateRole')->with('error', 'Cannot update role for admin user.');
+        }
+        if ($user->type === 'tourGuide') {
+            TourGuide::where('userId', $user->id)->delete();
+        }
+        $user->delete();
+        return redirect()->route('admin.updateRole')->with('success', 'User deleted successfully.');
+    }
+
 }
