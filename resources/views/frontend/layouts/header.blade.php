@@ -4,10 +4,9 @@
                 <div class="links">
                     <ul>
                         <li><a href="#" class="white"><i class="icon-calendar white"></i> Tuesday, May 16,
-                                2023</a>
+                                2024</a>
                         </li>
-                        <li><a href="#" class="white"><i class="icon-location-pin white"></i> Kathmandu,
-                                Nepal</a>
+                        <li><a href="#" class="white"><i class="icon-location-pin white"></i> Khulna, Bangladesh</a>
                         </li>
                         <li><a href="#" class="white"><i class="icon-clock white"></i> Sun-Fri: 10 AM – 5 PM</a>
                         </li>
@@ -32,8 +31,8 @@
                     <div class="navbar-flex d-flex align-items-center justify-content-between w-100 pb-3 pt-3">
 
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="index.html">
-                                <img src="{{ url('frontend/images/logo.png') }}" alt="image">
+                            <a class="navbar-brand" href="{{route('home')}}">
+                                <img src="{{ url('travelMateLogo') }}" alt="image">
                             </a>
                         </div>
 

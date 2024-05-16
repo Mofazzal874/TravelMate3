@@ -245,14 +245,26 @@
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="{{ url('frontend/js/jquery-3.5.1.min.js')}}"></script>
 <script src="{{ url('frontend/js/bootstrap.min.js') }}"></script>
-{{-- <script src="{{ url('frontend/js/particles.js') }}"></script>
-<script src="{{ url('frontend/js/particlerun.js') }}"></script> --}}
-{{-- <script src="{{ url('frontend/js/plugin.js') }}"></script> --}}
-{{-- <script src="{{ url('frontend/js/main.js') }}"></script> --}}
+{{-- Other scripts --}}
 <script src="{{ url('frontend/js/custom-swiper.js') }}"></script>
 <script src="{{ url('frontend/js/custom-nav.js') }}"></script>
+<script>
+    // Swiper: slider that i use from codePen and customize it(For Top Destination)
+    let next = document.querySelector('.next');
+    let prev = document.querySelector('.prev');
 
+    next.addEventListener('click', function(){
+        let items = document.querySelectorAll('.item');
+        document.querySelector('.slide').appendChild(items[0]);
+    });
+
+    prev.addEventListener('click', function(){
+        let items = document.querySelectorAll('.item');
+        document.querySelector('.slide').prepend(items[items.length - 1]);
+    });
+</script>
 </body>
+
 
 
 </html>

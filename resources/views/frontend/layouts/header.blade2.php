@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Travelin - Travel Tour Booking HTML Templates</title>
+<title>@yields('title') </title>
 
 <link rel="shortcut icon" type="image/x-icon" href="{{url('frontend/images/favicon.png')}}">
 
@@ -28,9 +28,9 @@
 <div class="container d-flex align-items-center justify-content-between">
 <div class="links">
 <ul>
-<li><a href="#" class="white"><i class="icon-calendar white"></i> Tuesday, May 16, 2023</a>
+<li><a href="#" class="white"><i class="icon-calendar white"></i> Tuesday, May 16, 2024</a>
 </li>
-<li><a href="#" class="white"><i class="icon-location-pin white"></i> Kathmandu, Nepal</a>
+<li><a href="#" class="white"><i class="icon-location-pin white"></i> Khulna, Bangladesh</a>
 </li>
 <li><a href="#" class="white"><i class="icon-clock white"></i> Sun-Fri: 10 AM – 5 PM</a></li>
 </ul>

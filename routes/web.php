@@ -39,7 +39,7 @@ use App\Http\Controllers\Frontend\ContactAdminController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutusController::class, 'index']);
 Route::get('/tour', [TourController::class, 'index']);
-Route::get('/tourSingle', [TourSingleController::class, 'index']);
+Route::get('/tourSingle/{id}', [TourSingleController::class, 'index'])->name('tourSingle');
 Route::get('/destination',[DestinationController::class, 'index' ]);
 Route::get('/destination-detail',[DestinationDetailController::class, 'index']);
 Route::get('/booking', [BookingController::class, 'index']);
@@ -110,9 +110,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('admin/places/store' , [PlacesController::class , 'store'])->name('admin.places.store') ;    //S-Storing after creating..where to go after creating and storing will be defind in store method of PlacesController
 
     Route::get('admin/places/show/{id}' , [PlacesController::class , 'show'])->name('admin.places.show') ;  //R-Read
-
     Route::get('admin/places/edit/{id}' , [PlacesController::class , 'edit'])->name('admin.places.edit') ;   //U-Update
-    
+
     Route::put('admin/places/edit/{id}' , [PlacesController::class , 'update'])->name('admin.places.update') ;//U-Update..Be careful with put method here
 
     Route::delete('admin/places/destroy/{id}' , [PlacesController::class , 'destroy'])->name('admin.places.destroy') ;  //D-Delete

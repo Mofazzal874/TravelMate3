@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Places;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TourSingleController extends Controller
 {
-    public function index(){
-        return view('frontend.tourSingle');
+    public function index(String $id){
+        $destination = Places::findOrFail($id);
+        return view('frontend.tourSingle' , compact('destination'));
     }
+    
+    
 }
