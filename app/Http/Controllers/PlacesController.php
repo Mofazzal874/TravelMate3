@@ -114,7 +114,7 @@ class PlacesController extends Controller
         'closing_hours' => 'nullable|string|max:20',
         'price' => 'required|string',
         'rating' => 'required|string',
-        'placeStatus' => 'required|boolean',
+        'placeStatus' => 'required|integer',
         'placeType' => 'nullable|string|max:255',
     ]);
 

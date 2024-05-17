@@ -2,6 +2,19 @@
 @section('title')
     TravelMate - Home
 @endsection
+@section('styles')
+    <style>
+        .btn-light-green {
+            background-color: lightgreen;
+            color: white;
+        }
+
+        .btn-light-green:hover {
+            background-color: green;
+            color: white;
+        }
+    </style>
+@endsection
 @section('main-container')
     <div class="tet"></div>
 
@@ -220,7 +233,7 @@
         <div class="white-overlay"></div>
     </section>
 
-
+    {{-- // Top Destinations --}}
     <section class="trending pb-5 pt-0">
         <div class="container">
             <div class="section-title mb-6 w-50 mx-auto text-center">
@@ -249,13 +262,13 @@
                                         <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
                                             <div class="rating">
                                                 @php
-                                                    $rating = (double) $destination->rating;
+                                                    $rating = (float) $destination->rating;
                                                 @endphp
                                                 @for ($i = 0; $i < (int) $rating; $i++)
                                                     <span class="fa fa-star checked"></span>
                                                 @endfor
                                             </div>
-                                            <span class="ms-2">({{$rating}} Rated Yet)</span>
+                                            <span class="ms-2">({{ $rating }} Rated Yet)</span>
                                         </div>
                                         <div class="des" style="font-weight: bold;color:beige">
                                             {{ $destination->description }}</div>
@@ -268,7 +281,8 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <a href="{{ route('tourSingle', ['id' => $destination->id]) }}"><button>See More</button></a>
+                                        <a href="{{ route('tourSingle', ['id' => $destination->id]) }}"><button>See
+                                                More</button></a>
                                     </div>
                                 </div>
                             @endforeach
@@ -286,7 +300,7 @@
 
 
 
-
+    {{-- //Get to know us --}}
     <section class="about-us pt-0" style="background-image:url(frontend/images/bg/bg-trans.png);">
         <div class="container">
             <div class="about-image-box">
@@ -363,428 +377,115 @@
     </section>
 
 
-    <section class="trending pb-0">
-        <div class="container">
-            <div class="row align-items-center justify-content-between mb-6 ">
-                <div class="col-lg-7">
-                    <div class="section-title text-center text-lg-start">
-                        <h4 class="mb-1 theme1">Top Pick</h4>
-                        <h2 class="mb-1">Best <span class="theme">Tour Packages</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore.</p>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                </div>
-            </div>
-            <div class="trend-box">
-                <div class="row item-slider">
-                    <div class="col-lg-4 col-md-6 col-sm-6 mx-auto mb-4 col-6">
-                        <div class="trend-item rounded box-shadow">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trending2.jpg') }}" alt="image" class>
-                                <div class="color-overlay"></div>
-                            </div>
-                            <div class="trend-content p-4 pt-5 position-relative">
-                                <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                    <div class="entry-author">
-                                        <i class="icon-calendar"></i>
-                                        <span class="fw-bold"> 9 Days Tours</span>
-                                    </div>
-                                </div>
-                                <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Croatia</h5>
-                                <h3 class="mb-1"><a href="{{ url('/tour') }}">Piazza Castello</a></h3>
-                                <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                    <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span class="ms-2">(12)</span>
-                                </div>
-                                <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in voluptate velit
-                                    esse cillum</p>
-                                <div class="entry-meta">
-                                    <div class="entry-author d-flex align-items-center">
-                                        <p class="mb-0"><span class="theme fw-bold fs-5"> $170.00</span> | Per person
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6  mx-auto mb-4 col-6">
-                        <div class="trend-item box-shadow rounded">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trending3.jpg') }}" alt="image">
-                                <div class="color-overlay"></div>
-                            </div>
-                            <div class="trend-content p-4 pt-5 position-relative">
-                                <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                    <div class="entry-author">
-                                        <i class="icon-calendar"></i>
-                                        <span class="fw-bold"> 9 Days Tours</span>
-                                    </div>
-                                </div>
-                                <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Greece</h5>
-                                <h3 class="mb-1"><a href="{{ url('/tour') }}">Santorini, Oia</a></h3>
-                                <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                    <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span class="ms-2">(38)</span>
-                                </div>
-                                <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in voluptate velit
-                                    esse cillum</p>
-                                <div class="entry-meta">
-                                    <div class="entry-author d-flex align-items-center">
-                                        <p class="mb-0"><span class="theme fw-bold fs-5"> $180.00</span> | Per person
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 mx-auto mb-4 col-6">
-                        <div class="trend-item box-shadow rounded">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trending4.jpg') }}" alt="image">
-                                <div class="color-overlay"></div>
-                            </div>
-                            <div class="trend-content p-4 pt-5 position-relative">
-                                <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                    <div class="entry-author">
-                                        <i class="icon-calendar"></i>
-                                        <span class="fw-bold"> 9 Days Tours</span>
-                                    </div>
-                                </div>
-                                <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Maldives</h5>
-                                <h3 class="mb-1"><a href="{{ url('/tour') }}">Hurawalhi Island</a></h3>
-                                <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                    <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span class="ms-2">(18)</span>
-                                </div>
-                                <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in voluptate velit
-                                    esse cillum</p>
-                                <div class="entry-meta">
-                                    <div class="entry-author d-flex align-items-center">
-                                        <p class="mb-0"><span class="theme fw-bold fs-5"> $260.00</span> | Per person
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 mx-auto mb-4 col-6">
-                        <div class="trend-item box-shadow rounded">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trending1.jpg') }}" alt="image">
-                                <div class="color-overlay"></div>
-                            </div>
-                            <div class="trend-content p-4 pt-5 position-relative">
-                                <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                    <div class="entry-author">
-                                        <i class="icon-calendar"></i>
-                                        <span class="fw-bold"> 5 Days Tours</span>
-                                    </div>
-                                </div>
-                                <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Greece</h5>
-                                <h3 class="mb-1"><a href="{{ url('/tour') }}">Santorini, Oia</a></h3>
-                                <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                    <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span class="ms-2">(38)</span>
-                                </div>
-                                <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in voluptate velit
-                                    esse cillum</p>
-                                <div class="entry-meta">
-                                    <div class="entry-author d-flex align-items-center">
-                                        <p class="mb-0"><span class="theme fw-bold fs-5"> $180.00</span> | Per person
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-
+    {{-- // Best Deal Destinations --}}
     <section class="trending pb-0 pt-6 d-block d-sm-none d-lg-block"
         style="background-image: url(frontend/images/shape2.png);">
         <div class="container">
-            <div class="section-title mb-6 w-75 mx-auto text-center">
-                <h4 class="mb-1 theme1">Top Deals</h4>
-                <h2 class="mb-1">The Last <span class="theme">Minute Deals</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-                </p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="section-title mb-6 w-75 mx-auto text-center">
+                    <h4 class="mb-1 theme1">Top Deals</h4>
+                    <h2 class="mb-1">The Last <span class="theme">Minute Deals</span></h2>
+                    <p>These destination are one of the best But you can get them a lowest price possible...choose your
+                        destination and book it..</p>
+                </div>
+                <a href="{{ route('bestDestination.tour') }}" class="btn btn-light-green rounded-pill text-white">See
+                    All</a>
             </div>
             <div class="trend-box">
                 <div class="row">
                     <div class="col-lg-5 mb-4">
-                        <div class="trend-item1 rounded box-shadow mb-4">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trendingb-2.jpg') }}" alt="image" class>
-                                <div class="trend-content1 p-4">
-                                    <h5 class="theme1 mb-1"><i class="flaticon-location-pin"></i> Norway</h5>
-                                    <h3 class="mb-1 white"><a href="{{ url('/tour') }}" class="white">Norway Lake</a>
-                                    </h3>
-                                    <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                        <div class="rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
+                        @for ($i = 0; $i <3; $i++)
+                            @if (isset($topOffers[$i]))
+                                <div class="trend-item1 rounded box-shadow mb-4">
+                                    <div class="trend-image position-relative">
+                                        <img src="{{ $topOffers[$i]->imageURL ? asset('storage/' . $topOffers[$i]->imageURL) : '' }}"
+                                            alt="image" class>
+                                        <div class="trend-content1 p-4">
+                                            <h5 class="theme1 mb-1"><i
+                                                    class="flaticon-location-pin"></i>{{ $topOffers[$i]->country }}</h5>
+                                            <h3 class="mb-1 white"><a
+                                                    href="{{ route('tourSingle', ['id' => $topOffers[$i]->id]) }}"
+                                                    class="white">{{ $topOffers[$i]->name }}</a></h3>
+                                            <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
+                                                <div class="rating">
+                                                    @php
+                                                        $rating = (float) $topOffers[$i]->rating;
+                                                    @endphp
+                                                    @for ($j = 0; $j < (int) $rating; $j++)
+                                                        <span class="fa fa-star checked"></span>
+                                                    @endfor
+                                                </div>
+                                                <span class="ms-2">({{ $rating }} Rated Yet)</span>
+                                            </div>
+                                            <div class="entry-meta d-flex align-items-center justify-content-between">
+                                                <div class="entry-author d-flex align-items-center">
+                                                    <p class="mb-0 white"><span
+                                                            class="theme1 fw-bold fs-5">${{ $topOffers[$i]->price }}</span>
+                                                        | Per person</p>
+                                                </div>
+                                                <div class="entry-author">
+                                                    <i class="icon-calendar white"></i>
+                                                    <span class="fw-bold white">{{ $topOffers[$i]->minDuration }} Days
+                                                        Tours</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <span class="ms-2 white">(16)</span>
-                                    </div>
-                                    <div class="entry-meta d-flex align-items-center justify-content-between">
-                                        <div class="entry-author d-flex align-items-center">
-                                            <p class="mb-0 white"><span class="theme1 fw-bold fs-5"> $180.00</span> |
-                                                Per person</p>
-                                        </div>
-                                        <div class="entry-author">
-                                            <i class="icon-calendar white"></i>
-                                            <span class="fw-bold white"> 6 Days Tours</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="overlay"></div>
-                            </div>
-                        </div>
-                        <div class="trend-item1 rounded box-shadow mb-4">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trending-large.jpg') }}" alt="image" class>
-                                <div class="trend-content1 p-4">
-                                    <h5 class="theme1 mb-1"><i class="flaticon-location-pin"></i> Egpyt</h5>
-                                    <h3 class="mb-1 white"><a href="{{ url('/tour') }}" class="white">Pyramid Land</a>
-                                    </h3>
-                                    <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                        <div class="rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                        <span class="ms-2 white">(16)</span>
-                                    </div>
-                                    <div class="entry-meta d-flex align-items-center justify-content-between">
-                                        <div class="entry-author d-flex align-items-center">
-                                            <p class="mb-0 white"><span class="theme1 fw-bold fs-5"> $180.00</span> |
-                                                Per person</p>
-                                        </div>
-                                        <div class="entry-author">
-                                            <i class="icon-calendar white"></i>
-                                            <span class="fw-bold white"> 6 Days Tours</span>
-                                        </div>
+                                        <div class="overlay"></div>
                                     </div>
                                 </div>
-                                <div class="overlay"></div>
-                            </div>
-                        </div>
-                        <div class="trend-item1 rounded box-shadow">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trendingb-1.jpg') }}" alt="image" class>
-                                <div class="trend-content1 p-4">
-                                    <h5 class="theme1 mb-1"><i class="flaticon-location-pin"></i> Usa</h5>
-                                    <h3 class="mb-1 white"><a href="{{ url('/tour') }}" class="white">New York
-                                            City</a></h3>
-                                    <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                        <div class="rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                        <span class="ms-2 white">(12)</span>
-                                    </div>
-                                    <div class="entry-meta d-flex align-items-center justify-content-between">
-                                        <div class="entry-author d-flex align-items-center">
-                                            <p class="mb-0 white"><span class="theme1 fw-bold fs-5"> $140.00</span> |
-                                                Per person</p>
-                                        </div>
-                                        <div class="entry-author">
-                                            <i class="icon-calendar white"></i>
-                                            <span class="fw-bold white"> 3 Days Tours</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="overlay"></div>
-                            </div>
-                        </div>
+                            @endif
+                        @endfor
                     </div>
                     <div class="col-lg-7">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 mb-4 col-6">
-                                <div class="trend-item rounded box-shadow">
-                                    <div class="trend-image position-relative">
-                                        <img src="{{ url('frontend/images/trending/trending1.jpg') }}" alt="image"
-                                            class>
-                                        <div class="color-overlay"></div>
-                                    </div>
-                                    <div class="trend-content p-4 pt-5 position-relative bg-white">
-                                        <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                            <div class="entry-author">
-                                                <i class="icon-calendar"></i>
-                                                <span class="fw-bold"> 4 Days Tours</span>
+                            @for ($i = 3; $i < 7; $i++)
+                                @if (isset($topOffers[$i]))
+                                    <div class="col-lg-6 col-md-6 mb-4 col-6">
+                                        <div class="trend-item rounded box-shadow">
+                                            <div class="trend-image position-relative">
+                                                <img src="{{ $topOffers[$i]->imageURL ? asset('storage/' . $topOffers[$i]->imageURL) : '' }}"
+                                                    alt="image" class>
+                                                <div class="color-overlay"></div>
                                             </div>
-                                        </div>
-                                        <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Spain</h5>
-                                        <h3 class="mb-1"><a href="{{ url('/tour') }}">Barcelona city beach</a></h3>
-                                        <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                            <div class="rating">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                            <span class="ms-2">(21)</span>
-                                        </div>
-                                        <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in
-                                            voluptate velit esse cillum</p>
-                                        <div class="entry-meta">
-                                            <div class="entry-author d-flex align-items-center">
-                                                <p class="mb-0"><span class="theme fw-bold fs-5"> $220.00</span> | Per
-                                                    person</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 mb-4 col-6">
-                                <div class="trend-item rounded box-shadow">
-                                    <div class="trend-image position-relative">
-                                        <img src="{{ url('frontend/images/trending/trending2.jpg') }}" alt="image"
-                                            class>
-                                        <div class="color-overlay"></div>
-                                    </div>
-                                    <div class="trend-content p-4 pt-5 position-relative bg-white">
-                                        <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                            <div class="entry-author">
-                                                <i class="icon-calendar"></i>
-                                                <span class="fw-bold"> 7 Days Tours</span>
-                                            </div>
-                                        </div>
-                                        <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Indonesia</h5>
-                                        <h3 class="mb-1"><a href="{{ url('/tour') }}">Bali Province</a></h3>
-                                        <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                            <div class="rating">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                            <span class="ms-2">(11)</span>
-                                        </div>
-                                        <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in
-                                            voluptate velit esse cillum</p>
-                                        <div class="entry-meta">
-                                            <div class="entry-author d-flex align-items-center">
-                                                <p class="mb-0"><span class="theme fw-bold fs-5"> $210.00</span> | Per
-                                                    person</p>
+                                            <div class="trend-content p-4 pt-5 position-relative bg-white">
+                                                <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
+                                                    <div class="entry-author">
+                                                        <i class="icon-calendar"></i>
+                                                        <span class="fw-bold">{{ $topOffers[$i]->minDuration }} Days
+                                                            Tours</span>
+                                                    </div>
+                                                </div>
+                                                <h5 class="theme mb-1"><i
+                                                        class="flaticon-location-pin"></i>{{ $topOffers[$i]->country }}
+                                                </h5>
+                                                <h3 class="mb-1"><a
+                                                        href="{{ route('tourSingle', ['id' => $topOffers[$i]->id]) }}">{{ $topOffers[$i]->name }}</a>
+                                                </h3>
+                                                <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
+                                                    <div class="rating">
+                                                        @php
+                                                            $rating = (float) $topOffers[$i]->rating;
+                                                        @endphp
+                                                        @for ($j = 0; $j < (int) $rating; $j++)
+                                                            <span class="fa fa-star checked"></span>
+                                                        @endfor
+                                                    </div>
+                                                    <span class="ms-2">({{ $rating }} Rated Yet)</span>
+                                                </div>
+                                                <p class="border-b pb-2 mb-2">{{ $topOffers[$i]->description }}</p>
+                                                <div class="entry-meta">
+                                                    <div class="entry-author d-flex align-items-center">
+                                                        <p class="mb-0"><span
+                                                                class="theme fw-bold fs-5">{{ $topOffers[$i]->price }}tk</span>
+                                                            | Per person</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 mb-4 col-6">
-                                <div class="trend-item rounded box-shadow">
-                                    <div class="trend-image position-relative">
-                                        <img src="{{ url('frontend/images/trending/trending3.jpg') }}" alt="image"
-                                            class>
-                                        <div class="color-overlay"></div>
-                                    </div>
-                                    <div class="trend-content p-4 pt-5 position-relative bg-white">
-                                        <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                            <div class="entry-author">
-                                                <i class="icon-calendar"></i>
-                                                <span class="fw-bold"> 3 Days Tours</span>
-                                            </div>
-                                        </div>
-                                        <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Russia</h5>
-                                        <h3 class="mb-1"><a href="{{ url('/tour') }}">Red City Land</a></h3>
-                                        <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                            <div class="rating">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                            <span class="ms-2">(25)</span>
-                                        </div>
-                                        <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in
-                                            voluptate velit esse cillum</p>
-                                        <div class="entry-meta">
-                                            <div class="entry-author d-flex align-items-center">
-                                                <p class="mb-0"><span class="theme fw-bold fs-5"> $120.00</span> | Per
-                                                    person</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 mb-4 col-6">
-                                <div class="trend-item rounded box-shadow">
-                                    <div class="trend-image position-relative">
-                                        <img src="{{ url('frontend/images/trending/trending4.jpg') }}" alt="image"
-                                            class>
-                                        <div class="color-overlay"></div>
-                                    </div>
-                                    <div class="trend-content p-4 pt-5 position-relative bg-white">
-                                        <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                            <div class="entry-author">
-                                                <i class="icon-calendar"></i>
-                                                <span class="fw-bold"> 5 Days Tours</span>
-                                            </div>
-                                        </div>
-                                        <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Bangladesh</h5>
-                                        <h3 class="mb-1"><a href="{{ url('/tour') }}">Cox's bazar Beach</a></h3>
-                                        <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                            <div class="rating">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                            <span class="ms-2">(32)</span>
-                                        </div>
-                                        <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in
-                                            voluptate velit esse cillum</p>
-                                        <div class="entry-meta">
-                                            <div class="entry-author d-flex align-items-center">
-                                                <p class="mb-0"><span class="theme fw-bold fs-5"> $100.00</span> | Per
-                                                    person</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                @endif
+                            @endfor
                         </div>
                     </div>
                 </div>
@@ -793,6 +494,7 @@
     </section>
 
 
+    {{-- Love Where You're Going --}}
     <section class="discount-action pt-2"
         style="background-image:url(frontend/images/section-bg1.png); background-position:center;">
         <div class="section-shape section-shape1 top-inherit bottom-0"
@@ -812,7 +514,7 @@
                             <div class="call-button text-center">
                                 <button type="button" class="play-btn js-video-button" data-video-id="152879427"
                                     data-channel="vimeo">
-                                    <a href="{{ url('/tour') }}">Explore</a>
+                                    <a href="{{route('generalDestination.tour')}}">Explore</a>
                                 </button>
                             </div>
                             <div class="video-figure"></div>
@@ -824,298 +526,97 @@
         <div class="white-overlay"></div>
     </section>
 
-
+    {{-- General Destinations --}}
     <section class="trending pb-0 pt-4">
         <div class="container">
             <div class="section-title mb-6 w-75 mx-auto text-center">
-                <h4 class="mb-1 theme1">Top Offers</h4>
-                <h2 class="mb-1">Special <span class="theme">Offers & Discount </span> Packages</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                <h4 class="mb-1 theme1">All Types of Places</h4>
+                <h2 class="mb-1">These<span class="theme">Are Generally Visited</span> Places</h2>
+                <p>Get Details , Book , connect and Go....</p>
                 </p>
             </div>
             <div class="trend-box">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6 mb-4 col-6 ">
-                        <div class="trend-item rounded box-shadow bg-white">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trending3.jpg') }}" alt="image" class>
-                                <div class="ribbon ribbon-top-left"><span class="fw-bold">20% OFF</span></div>
-                                <div class="color-overlay"></div>
-                            </div>
-                            <div class="trend-content p-4 pt-5 position-relative">
-                                <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                    <div class="entry-author">
-                                        <i class="icon-calendar"></i>
-                                        <span class="fw-bold"> 9 Days Tours</span>
+                    @for ($i = 0; $i <3; $i++)
+                            @if (isset($generalDestinations[$i]))
+                                <div class="col-lg-4 col-md-6 col-sm-6 mb-4 col-6 ">
+                                    <div class="trend-item rounded box-shadow bg-white">
+                                        <div class="trend-image position-relative">
+                                            <img src="{{ $topOffers[$i]->imageURL ? asset('storage/' . $topOffers[$i]->imageURL) : '' }}" alt="trvelMateImage" class>
+                                            <div class="ribbon ribbon-top-left"><span class="fw-bold">{{ rand(10, 70) }}% OFF</span></div>
+                                            <div class="color-overlay"></div>
+                                        </div>
+                                        <div class="trend-content p-4 pt-5 position-relative">
+                                            <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
+                                                <div class="entry-author">
+                                                    <i class="icon-calendar"></i>
+                                                    <span class="fw-bold"> {{$generalDestinations[$i]->minDuration}} Days Tours</span>
+                                                </div>
+                                            </div>
+                                            <h5 class="theme mb-1"><i class="flaticon-location-pin"></i>{{$generalDestinations[$i]->country}}</h5>
+                                            <h3 class="mb-1"><a href="{{ route('tourSingle', ['id' => $generalDestinations[$i]->id]) }}">{{$generalDestinations[$i]->name}}</a></h3>
+                                            <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
+                                                <div class="rating">
+                                                    @php
+                                                        $rating = (float) $generalDestinations[$i]->rating;
+                                                    @endphp
+                                                    @for ($j = 0; $j < (int) $rating; $j++)
+                                                        <span class="fa fa-star checked"></span>
+                                                    @endfor
+                                                </div>
+                                                <span class="ms-2">({{ $rating }} Rated Yet)</span>
+                                            </div>
+                                            <p class=" border-b pb-2 mb-2">{{$generalDestinations[$i]->description}}</p>
+                                            <div class="entry-meta">
+                                                <div class="entry-author d-flex align-items-center">
+                                                    <p class="mb-0"><span class="theme fw-bold fs-5"> {{$generalDestinations[$i]->price}}</span> | Per person
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Croatia</h5>
-                                <h3 class="mb-1"><a href="{{ url('/tour') }}">Piazza Castello</a></h3>
-                                <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                    <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span class="ms-2">(12)</span>
-                                </div>
-                                <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in voluptate velit
-                                    esse cillum</p>
-                                <div class="entry-meta">
-                                    <div class="entry-author d-flex align-items-center">
-                                        <p class="mb-0"><span class="theme fw-bold fs-5"> $170.00</span> | Per person
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 mb-4 col-6">
-                        <div class="trend-item box-shadow rounded bg-white">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trending1.jpg') }}" alt="image">
-                                <div class="ribbon ribbon-top-left"><span class="fw-bold">30% OFF</span></div>
-                                <div class="color-overlay"></div>
-                            </div>
-                            <div class="trend-content p-4 pt-5 position-relative">
-                                <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                    <div class="entry-author">
-                                        <i class="icon-calendar"></i>
-                                        <span class="fw-bold"> 9 Days Tours</span>
-                                    </div>
-                                </div>
-                                <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Greece</h5>
-                                <h3 class="mb-1"><a href="{{ url('/tour') }}">Santorini, Oia</a></h3>
-                                <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                    <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span class="ms-2">(38)</span>
-                                </div>
-                                <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in voluptate velit
-                                    esse cillum</p>
-                                <div class="entry-meta">
-                                    <div class="entry-author d-flex align-items-center">
-                                        <p class="mb-0"><span class="theme fw-bold fs-5"> $180.00</span> | Per person
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 mb-4 col-6">
-                        <div class="trend-item box-shadow rounded bg-white">
-                            <div class="trend-image position-relative">
-                                <img src="{{ url('frontend/images/trending/trending2.jpg') }}" alt="image">
-                                <div class="ribbon ribbon-top-left"><span class="fw-bold">15% OFF</span></div>
-                                <div class="color-overlay"></div>
-                            </div>
-                            <div class="trend-content p-4 pt-5 position-relative">
-                                <div class="trend-meta bg-theme white px-3 py-2 rounded d-none d-sm-block">
-                                    <div class="entry-author">
-                                        <i class="icon-calendar"></i>
-                                        <span class="fw-bold"> 9 Days Tours</span>
-                                    </div>
-                                </div>
-                                <h5 class="theme mb-1"><i class="flaticon-location-pin"></i> Maldives</h5>
-                                <h3 class="mb-1"><a href="{{ url('/tour') }}">Hurawalhi Island</a></h3>
-                                <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
-                                    <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span class="ms-2">(18)</span>
-                                </div>
-                                <p class=" border-b pb-2 mb-2">Duis aute irure dolor in reprehenderit in voluptate velit
-                                    esse cillum</p>
-                                <div class="entry-meta">
-                                    <div class="entry-author d-flex align-items-center">
-                                        <p class="mb-0"><span class="theme fw-bold fs-5"> $260.00</span> | Per person
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            @endif
+                    @endfor
+                    
                 </div>
             </div>
         </div>
     </section>
 
 
-    <section class="our-team pb-6 d-none d-lg-block">
-        <div class="container">
-            <div class="section-title mb-6 w-75 mx-auto text-center">
-                <h4 class="mb-1 theme1">Tour Guides</h4>
-                <h2 class="mb-1">Meet Our <span class="theme">Excellent Guides</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-                </p>
-            </div>
-            <div class="team-main">
-                <div class="row shop-slider">
-                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                        <div class="team-list rounded">
-                            <div class="team-image">
-                                <img src="{{ url('frontend/images/team/img1.jpg') }}" alt="team">
-                            </div>
-                            <div class="team-content text-center p-3 bg-theme">
-                                <h4 class="mb-0 white">Salmon Thuir</h4>
-                                <p class="mb-0 white">Senior Agent</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                        <div class="team-list rounded">
-                            <div class="team-image">
-                                <img src="{{ url('frontend/images/team/img2.jpg') }}" alt="team">
-                            </div>
-                            <div class="team-content text-center p-3 bg-theme">
-                                <h4 class="mb-0 white">Horke Pels</h4>
-                                <p class="mb-0 white">Head Officer</p>
+   <section class="our-team pb-6 d-none d-lg-block">
+    <div class="container">
+        <div class="section-title mb-6 w-75 mx-auto text-center">
+            <h4 class="mb-1 theme1">Tour Guides</h4>
+            <h2 class="mb-1">Meet Our <span class="theme">Excellent Guides</span></h2>
+            <p>They are actually world one of the best 100 100 TourGuides...they are very friendly and helpful to
+                you...Only they can make your tour more than imaginably beautiful...and they are important for your survival 
+            </p>
+        </div>
+        <div class="team-main">
+            <div class="row shop-slider">
+                @for ($i = 0; $i < 7; $i++)
+                    @if (isset($tourGuides[$i]))
+                        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                            <div class="team-list rounded">
+                                <div class="team-image">
+                                    <img src="{{ $tourGuides[$i]->image ? asset('storage/' . $tourGuides[$i]->image) : '' }}" alt="trvelMateImage" >
+                                </div>
+                                <div class="team-content text-center p-3 bg-theme">
+                                    <h4 class="mb-1 white"><a href="{{ route('tourGuideSingle', ['id' => $tourGuides[$i]->id]) }}">{{ $tourGuides[$i]->name }}</a></h4>
+                                    <p class="mb-0 white">{{ $tourGuides[$i]->experience }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                        <div class="team-list rounded">
-                            <div class="team-image">
-                                <img src="{{ url('frontend/images/team/img4.jpg') }}" alt="team">
-                            </div>
-                            <div class="team-content text-center p-3 bg-theme">
-                                <h4 class="mb-0 white">Solden kalos</h4>
-                                <p class="mb-0 white">Supervisor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                        <div class="team-list rounded">
-                            <div class="team-image">
-                                <img src="{{ url('frontend/images/team/img3.jpg') }}" alt="team">
-                            </div>
-                            <div class="team-content text-center p-3 bg-theme">
-                                <h4 class="mb-0 white">Nelson Bam</h4>
-                                <p class="mb-0 white">Quality Assurance</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                        <div class="team-list rounded">
-                            <div class="team-image">
-                                <img src="{{ url('frontend/images/team/img4.jpg') }}" alt="team">
-                            </div>
-                            <div class="team-content text-center bg-theme p-3">
-                                <h4 class="mb-0 white">Cacics Coold</h4>
-                                <p class="mb-0 white">Asst. Manager</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endfor
             </div>
         </div>
-    </section>
-    <section class="trending recent-articles pb-6">
-        <div class="container">
-            <div class="section-title mb-6 w-75 mx-auto text-center">
-                <h4 class="mb-1 theme1">Our Blogs Offers</h4>
-                <h2 class="mb-1">Recent <span class="theme">Articles & Posts</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-                </p>
-            </div>
-            <div class="recent-articles-inner">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="trend-item box-shadow bg-white mb-4 rounded overflow-hidden">
-                            <div class="trend-image">
-                                <img src="{{ url('frontend/images/trending/trending10.jpg') }}" alt="image">
-                            </div>
-                            <div class="trend-content-main p-4 pb-2">
-                                <div class="trend-content">
-                                    <h5 class="theme mb-1">Technology</h5>
-                                    <h4><a href="{{ url('/blog-detail') }}">How a developer duo at Deutsche Bank keep
-                                            remote
-                                            alive.</a></h4>
-                                    <p class="mb-3">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    </p>
-                                    <div class="entry-meta d-flex align-items-center justify-content-between">
-                                        <div class="entry-author mb-2 d-none d-md-block">
-                                            <img src="{{ url('frontend/images/reviewer/2.jpg') }}" alt
-                                                class="rounded-circle me-1">
-                                            <span>Sollmond Nell</span>
-                                        </div>
-                                        <div class="entry-button d-flex align-items-centermb-2">
-                                            <a href="#" class="nir-btn">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="trend-item box-shadow bg-white mb-4 rounded overflow-hidden">
-                            <div class="trend-image">
-                                <img src="{{ url('frontend/images/trending/trending12.jpg') }}" alt="image">
-                            </div>
-                            <div class="trend-content-main p-4 pb-2">
-                                <div class="trend-content">
-                                    <h5 class="theme mb-1">Inspiration</h5>
-                                    <h4><a href="{{ url('/blog-detail') }}">Inspire Runner with Autism Graces of Women's
-                                            Running</a>
-                                    </h4>
-                                    <p class="mb-3">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    </p>
-                                    <div class="entry-meta d-flex align-items-center justify-content-between">
-                                        <div class="entry-author mb-2 d-none d-md-block">
-                                            <img src="{{ url('frontend/images/reviewer/1.jpg') }}" alt
-                                                class="rounded-circle me-1">
-                                            <span>David Scott</span>
-                                        </div>
-                                        <div class="entry-button d-flex align-items-center mb-2">
-                                            <a href="#" class="nir-btn">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-6">
-                        <div class="trend-item box-shadow bg-white mb-4 rounded overflow-hidden">
-                            <div class="trend-image">
-                                <img src="{{ url('frontend/images/trending/trending13.jpg') }}" alt="image">
-                            </div>
-                            <div class="trend-content-main p-4 pb-2">
-                                <div class="trend-content">
-                                    <h5 class="theme mb-1">Public</h5>
-                                    <h4><a href="{{ url('/blog-detail') }}">Services To Grow Your Business Sell Affiliate
-                                            Products</a></h4>
-                                    <p class="mb-3">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    </p>
-                                    <div class="entry-meta d-flex align-items-center justify-content-between">
-                                        <div class="entry-author mb-2 d-none d-md-block ">
-                                            <img src="{{ url('frontend/images/reviewer/3.jpg') }}" alt
-                                                class="rounded-circle me-1">
-                                            <span>John Bolden</span>
-                                        </div>
-                                        <div class="entry-button d-flex align-items-center mb-2">
-                                            <a href="#" class="nir-btn">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
+
+
+
+    {{-- Blogs --}}
 @endsection

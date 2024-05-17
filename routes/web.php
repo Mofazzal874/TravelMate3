@@ -6,24 +6,25 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PlacesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TourGuideController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController;
-use App\Http\Controllers\Frontend\TourController;
-use App\Http\Controllers\Frontend\AboutusController;
 
 
 
 
 //backend controllers
+use App\Http\Controllers\Frontend\TourController;
+use App\Http\Controllers\Frontend\AboutusController;
+
+//admin page controllers
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\TourSingleController;
 
-//admin page controllers
 use App\Http\Controllers\Frontend\DestinationController;
-use App\Http\Controllers\Frontend\DestinationDetailController;
-
 use App\Http\Controllers\Frontend\ContactAdminController;
+use App\Http\Controllers\Frontend\DestinationDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,11 +39,18 @@ use App\Http\Controllers\Frontend\ContactAdminController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutusController::class, 'index']);
-Route::get('/tour', [TourController::class, 'index']);
+
+Route::get('bestDestination/tour', [TourController::class, 'bestDestination'])->name('bestDestination.tour');
+Route::get('generalDestination/tour', [TourController::class, 'generalDestination'])->name('generalDestination.tour');
 Route::get('/tourSingle/{id}', [TourSingleController::class, 'index'])->name('tourSingle');
 Route::get('/destination',[DestinationController::class, 'index' ]);
 Route::get('/destination-detail',[DestinationDetailController::class, 'index']);
 Route::get('/booking', [BookingController::class, 'index']);
+
+// all about TourGuide
+Route::get('/tourGuideSingle/{id}', [TourGuideController::class, 'tourGuideProfile'])->name('tourGuideSingle');
+
+
 
 Route::get('/faq', function () {
     return view('frontend.faq');

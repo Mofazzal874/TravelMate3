@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('closing_hours')->nullable();
             $table->string('price');
             $table->string('rating');
-            $table->boolean('placeStatus')->default(false); //general - 0 , top - 1 , best - 2
+            $table->integer('placeStatus')->default(0); //general - 0 , top - 1 , best - 2
             $table->string('placeType')->nullable();
             $table->timestamps();
         });
