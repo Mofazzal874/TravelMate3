@@ -41,8 +41,7 @@
 
                                 <li><a href="{{ url('/') }}">Home</a></li>
                                 <li><a href="{{ url('/about') }}">About Us</a></li>
-                                <li><a href="{{ url('/tour') }}">Tours</a></li>
-                                <li><a href="{{ url('/destination') }}">Destination</a></li>
+                                <li><a href="{{ route('allDestination') }}">ALL Destination</a></li>
                                 <li class="submenu dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false">Pages <i class="icon-arrow-down"

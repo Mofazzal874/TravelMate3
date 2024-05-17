@@ -40,6 +40,7 @@ use App\Http\Controllers\Frontend\DestinationDetailController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutusController::class, 'index']);
 
+Route::get('/allDestination', [TourController::class, 'allDestination'])->name('allDestination');
 Route::get('bestDestination/tour', [TourController::class, 'bestDestination'])->name('bestDestination.tour');
 Route::get('generalDestination/tour', [TourController::class, 'generalDestination'])->name('generalDestination.tour');
 Route::get('/tourSingle/{id}', [TourSingleController::class, 'index'])->name('tourSingle');

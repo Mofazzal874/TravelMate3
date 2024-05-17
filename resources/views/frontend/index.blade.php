@@ -389,7 +389,7 @@
                     <p>These destination are one of the best But you can get them a lowest price possible...choose your
                         destination and book it..</p>
                 </div>
-                <a href="{{ route('bestDestination.tour') }}" class="btn btn-light-green rounded-pill text-white">See
+                <a href="{{ route('bestDestination.tour') }}" class="btn btn-light-green rounded-pill text-white" style="color: #029e9d;">See
                     All</a>
             </div>
             <div class="trend-box">
@@ -534,7 +534,10 @@
                 <h2 class="mb-1">These<span class="theme">Are Generally Visited</span> Places</h2>
                 <p>Get Details , Book , connect and Go....</p>
                 </p>
+                <a href="{{ route('generalDestination.tour') }}" class="btn btn-light-green rounded-pill text-white" style="color: #029e9d;">See
+                    All</a>
             </div>
+            
             <div class="trend-box">
                 <div class="row">
                     @for ($i = 0; $i <3; $i++)
@@ -584,7 +587,7 @@
         </div>
     </section>
 
-
+    {{-- Tour Guides --}}
    <section class="our-team pb-6 d-none d-lg-block">
     <div class="container">
         <div class="section-title mb-6 w-75 mx-auto text-center">

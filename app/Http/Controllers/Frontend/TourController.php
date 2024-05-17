@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class TourController extends Controller
 {
+
+    public function allDestination(){
+        $places = Places::all();
+        return view('frontend.destination', compact('places'));
+    }
    public function bestDestination()
     {
         // Filter places based on the placeStatus
