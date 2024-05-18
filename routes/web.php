@@ -49,7 +49,9 @@ Route::get('/destination-detail',[DestinationDetailController::class, 'index']);
 Route::get('/booking', [BookingController::class, 'index']);
 
 // all about TourGuide
+Route::get('/tourGuide', [TourGuideController::class, 'index'])->name('tourGuide');
 Route::get('/tourGuideSingle/{id}', [TourGuideController::class, 'tourGuideProfile'])->name('tourGuideSingle');
+
 
 
 

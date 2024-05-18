@@ -7,11 +7,11 @@
         <div class="breadcrumb-outer">
             <div class="container">
                 <div class="breadcrumb-content text-center">
-                    <h1 class="mb-3">Destination List</h1>
+                    <h1 class="mb-3">TourGuides List</h1>
                     <nav aria-label="breadcrumb" class="d-block">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Destination Lists</li>
+                            <li class="breadcrumb-item active" aria-current="page">Find Desired Tour Guide</li>
                         </ul>
                     </nav>
                 </div>
@@ -24,29 +24,23 @@
     <section class="trending pb-0 pt-6">
         <div class="container">
             <div class="section-title mb-6 w-50 mx-auto text-center">
-                <h4 class="mb-1 theme1">Top Destinations</h4>
-                <h2 class="mb-1">Explore<span class="theme">Top Destinations</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <h4 class="mb-1 theme1">Tour Guides</h4>
+                <h2 class="mb-1">Find <span class="theme">Your Desired TourGuide</span></h2>
+                <p>To make the journey more enjoyable , calculative, decisive and Safe ..</p>
             </div>
             <div class="row align-items-center">
-                @foreach ($places as $place)
-                <div class="col-lg-4 col-md-6 col-sm-6 col-6 mb-4">
-                    <div class="trend-item1">
-                        <div class="trend-image position-relative rounded">
-                            <img src="{{ $place->imageURL ? asset('storage/' . $place->imageURL) : '' }}" alt="travelMateImage">
-                            <div
-                                class="trend-content d-flex align-items-center justify-content-between position-absolute bottom-0 p-4 w-100 z-index">
-                                <div class="trend-content-title">
-                                    <h3 class="mb-0 white"><a href="{{route('tourSingle' , $place->id)}}" class="theme1">{{$place->name}}</a>
-                                    </h3>
-                                    <h5 class="mb-0 text-white">{{$place->country}}</h5>
+                @foreach($tourGuides as $tg)
+                        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                            <div class="team-list rounded">
+                                <div class="team-image">
+                                    <img src="{{ $tg->image ? asset('storage/' . $tg->image) : '' }}" alt="trvelMateImage" >
                                 </div>
-                                <span class="white bg-theme p-1 px-2 rounded d-none d-sm-block">{{$place->minDuration}} Tours</span>
+                                <div class="team-content text-center p-3 bg-theme">
+                                    <h4 class="mb-1 white"><a href="{{ route('tourGuideSingle', ['id' => $tg->id]) }}">{{ $tg->name }}</a></h4>
+                                    <p class="mb-0 white">{{ $tg->experience }}</p>
+                                </div>
                             </div>
-                            <div class="color-overlay"></div>
                         </div>
-                    </div>
-                </div>
                 @endforeach
             </div>
         </div>

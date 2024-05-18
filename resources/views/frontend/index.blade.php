@@ -596,6 +596,8 @@
             <p>They are actually world one of the best 100 100 TourGuides...they are very friendly and helpful to
                 you...Only they can make your tour more than imaginably beautiful...and they are important for your survival 
             </p>
+            <a href="{{ route('tourGuide') }}" class="btn btn-light-green rounded-pill text-white" style="color: #029e9d;">See
+                All</a>
         </div>
         <div class="team-main">
             <div class="row shop-slider">
