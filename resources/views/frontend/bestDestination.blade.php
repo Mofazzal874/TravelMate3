@@ -20,7 +20,7 @@
         <div class="dot-overlay"></div>
     </section>
 
-
+    
     <section class="trending pt-6 pb-0 bg-lgrey">
         <div class="container">
             <div class="list-results d-flex align-items-center justify-content-between">
