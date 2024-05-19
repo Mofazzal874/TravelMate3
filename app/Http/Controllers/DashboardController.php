@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\TourGuide;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -32,6 +33,11 @@ class DashboardController extends Controller
     }
     public function tourGuideDashboard()
     {
-        return view('tourGuide.dashboard');
+        $profile = User::findOrFail(auth()->user()->id);
+        // $tourGuideInfo = TourGuide::where('userId', auth()->user()->id)->first();
+        return view('tourGuide.profile.dashboard' , compact('profile'));
     }
+    // public function updateBookingAndPricing(String $id){
+
+    // }
 }

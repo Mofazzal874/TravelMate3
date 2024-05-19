@@ -1,4 +1,4 @@
-@extends('layouts.adminLayout')
+@extends('layouts.tourGuideLayout')
  
 @section('title', 'Profile of $profile->name')
  
@@ -9,8 +9,15 @@
 <hr />
 <div class="intro-y flex items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        Profile Of {{$profile->name}}
+            Please also Update your <a href="{{route('tourGuide.bookingAndPricing.update', auth()->user()->id)}}" style="color:rgb(18, 130, 68);">Booking & Pricing Infomation</a> for better reach to the customers..
     </h2>
+</div>
+<div>
+    @if (Session::has('success'))
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
 </div>
 <!-- BEGIN: Profile Info -->
 <div class="intro-y box px-5 pt-5 mt-5">
@@ -102,7 +109,7 @@
                     <label>Education</label>
                     <input type="text" class="input w-full bg-gray-100 border mt-2 mb-7 " placeholder="Input text" value="{{$profile->education}}"  disabled>
                 </div>
-                <a href="{{ route('admin.profile.edit', $profile->id) }}" class="button  w-50 bg-theme-1 text-white mt-3">Update Information</a>
+                <a href="{{ route('tourGuide.profile.edit', $profile->id) }}" class="button  w-50 bg-theme-1 text-white mt-3">Update Information</a>
 
             </div>
         </div>

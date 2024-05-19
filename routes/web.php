@@ -142,7 +142,33 @@ Route::middleware(['auth', 'user-access:manager'])->group(function () {
     Route::get('manager/dashboard', [DashboardController::class, 'managerDashboard'])->name('manager.dashboard');
 });
 
+
 //Tour Guide Routes list
 Route::middleware(['auth', 'user-access:tourGuide'])->group(function () {
     Route::get('tourGuide/dashboard', [DashboardController::class, 'tourGuideDashboard'])->name('tourGuide.dashboard');
+    Route::get('tourGuide/dashboard/edit/{id}', [TourGuideController::class, 'editProfile'])->name('tourGuide.profile.edit');
+    Route::put('tourGuide/dashboard/edit/{id}', [TourGuideController::class, 'updateProfile'])->name('tourGuide.profile.update');
+
+    Route::get('tourGuide/messages', [TourGuideController::class, 'messages'])->name('tourGuide.messages');
+    Route::delete('tourGuide/messages/delete/{id}', [TourGuideController::class, 'deleteMessage'])->name('tourGuide.messages.delete');
+
+    //places showing in tour guide dashboard
+    // -------------------------------------
+
+
+
+    //Booking & pricing Info ->
+    Route::get('tourGuide/bookingAndPricing', [TourGuideController::class, 'bookingAndPricing'])->name('tourGuide.bookingAndPricing');
+    Route::put('tourGuide/bookingAndPricing/edit/{id}', [TourGuideController::class, 'UpdateBookingAndPricing'])->name('tourGuide.bookingAndPricing.update');
+
+    //Bookings showing in tour guide dashboard
+    Route::get('tourGuide/bookings', [TourGuideController::class, 'bookings'])->name('tourGuide.bookings');
+    Route::get('tourGuide/bookings/show/{id}', [TourGuideController::class, 'bookingDetails'])->name('tourGuide.bookings.show');
+    Route::delete('tourGuide/bookings/destroy/{id}', [TourGuideController::class, 'deleteBooking'])->name('tourGuide.bookings.destroy');   //eikhane ekhono ghapla ache 
+    //delete koira dile abar user re feedback pathanor mechanism banaite hoibo ..abar porshudin ct ache..bai bad de 
+
+
+
+    
+
 });

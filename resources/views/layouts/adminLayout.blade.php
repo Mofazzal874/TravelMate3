@@ -99,6 +99,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('admin.profile.update' , auth()->user()->id)}}">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{route('logout')}}">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
@@ -136,8 +144,8 @@
                     </button>
 
                     <button data-dropdown class="flex items-center px-3 py-2 focus:outline-none hover:bg-gray-200 hover:rounded-md" type="button" x-data="{ open: false }" @click="open = true" :class="{ 'bg-gray-200 rounded-md': open }">
-                        <img src="{{ asset('assets/imgs/customer01.jpg') }}" alt="Profile" class="h-8 w-8 rounded-full">
-                        <span class="ml-4 text-sm hidden md:inline-block">Mofazzal Hosen</span>
+                        <img src="{{ auth()->user()->image? asset('storage/' . auth()->user()->image) : '' }}" alt="travelMateImage" class="h-8 w-8 rounded-full">
+                        <span class="ml-4 text-sm hidden md:inline-block">{{auth()->user()->name}}</span>
                         <ion-icon name="chevron-down-outline" class="w-5 ml-2"></ion-icon>
                     
                         <div data-dropdown-items class="text-sm text-left absolute top-0 right-0 mt-16 mr-4 bg-white rounded border border-gray-400 shadow" x-show="open" @click.away="open = false">

@@ -1,4 +1,4 @@
-@extends('layouts.adminLayout')
+@extends('layouts.tourGuideLayout')
 
 @section('title', 'Update Profile of ' . $profile->name)
 
@@ -11,6 +11,13 @@
     <h2 class="text-lg font-medium mr-auto">
         Update the Profile Of {{ $profile->name }}
     </h2>
+</div>
+<div>
+    @if (Session::has('success'))
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
 </div>
 <form action="{{ route('tourGuide.profile.update', $profile->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -214,7 +221,7 @@
         </div>
     </div>
     <div class="flex justify-end mt-4 mr-4">
-        <button type="submit" class="button bg-theme-1 text-white">Update</button>
+        <button type="submit" class="button w-50 bg-theme-1 text-white mt-3">Update</button>
     </div>
 </form>
 <!-- BEGIN: JS Assets-->
