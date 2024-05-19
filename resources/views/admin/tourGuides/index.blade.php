@@ -83,7 +83,7 @@
                             <td>
                                 <div class="h-14 pt-5">
                                     
-                                    <a href="{{ route('admin.tourGuides.show', $rs->id) }}" class="text-green-800 pl-2"><ion-icon name="create-outline"></ion-icon></a>  
+                                    <a href="{{ route('admin.tourGuides.show', $rs->id) }}" class="text-green-800 pl-2"><ion-icon name="eye-outline"></ion-icon></a>  
                                     <form action="{{ route('admin.tourGuides.destroy', $rs->id) }}" method="POST"
                                         onsubmit="return confirm('Delete?')" class="float-right text-red-800">
                                         @csrf

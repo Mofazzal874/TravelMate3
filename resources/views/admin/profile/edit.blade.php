@@ -12,7 +12,14 @@
         Update the Profile Of {{ $profile->name }}
     </h2>
 </div>
-<form action="{{ route('tourGuide.profile.update', $profile->id) }}" method="POST" enctype="multipart/form-data">
+<div>
+    @if (Session::has('success'))
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+</div>
+<form action="{{ route('admin.profile.update', $profile->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <!-- BEGIN: Profile Info -->

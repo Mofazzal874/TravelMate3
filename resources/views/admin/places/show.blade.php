@@ -19,6 +19,13 @@
                             {{$places->name}} Information
                         </h2>
                 </div>
+                <div>
+                    @if (Session::has('success'))
+                        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="p-5">
                     <div class="grid grid-cols-12 gap-5">
                         <div class="col-span-12 xl:col-span-4">
