@@ -517,7 +517,7 @@
                                                 class="rounded box-shadow mb-2 border-all">Map</a>
                                         </li> --}}
                                         <li>
-                                            <a data-toggle="tab" href="#tour-guides"
+                                            <a data-toggle="tab" href="{{route('tourGuideForAPlace' , $destination->id)}}"
                                                 class="rounded box-shadow mb-2 border-all">TourGuides</a>
                                         </li>
                                         <li>
