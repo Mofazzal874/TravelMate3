@@ -170,6 +170,14 @@
             </div>
         </div>
     </section>
+    <!-- Book a TourGuide Button Section -->
+    <div class="text-center my-8">
+        <h4 class="text-xl font-bold mb-3">Book me as your Guide</h4>
+        <div class="form-btn mt-2">
+            
+            <a href="{{ route('bookTourGuide', ['id' => $tourGuide->id]) }}" class="nir-btn">Book Now</a>
+        </div>
+    </div>
     <section class="discount-action pt-8 pb-8" style="background-image: url(frontend/images/section-bg1.png); background-position: center;">
         <div class="container mx-auto text-center">
             <h2 class="text-2xl lg:text-3xl xl:text-4xl font-bold text-black mb-3">Join Our <span class="text-theme">Professional & Friendly</span> Team</h2>

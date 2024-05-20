@@ -53,6 +53,7 @@ Route::get('/booking', [BookingController::class, 'index']);
 Route::get('/tourGuide', [TGController::class, 'index'])->name('tourGuide');
 Route::get('/tourGuideSingle/{id}', [TGController::class, 'tourGuideProfile'])->name('tourGuideSingle');
 Route::get('/tourGuides/place/{id}', [TGController::class, 'tourGuidesForAPlace'])->name('tourGuideForAPlace');
+Route::get('tourGuide/booking/{id}', [TGController::class, 'bookTourGuide'])->name('bookTourGuide');
 
 
 

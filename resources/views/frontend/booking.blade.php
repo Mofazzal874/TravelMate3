@@ -2,8 +2,8 @@
 
 @section('main-container')
 
-<section class="breadcrumb-main pb-20 pt-14" style="background-image: url(frontend/images/bg/bg1.jpg);">
-    <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url(frontend/images/shape8.png);"></div>
+<section class="breadcrumb-main pb-20 pt-14" style="background-image: url({{ asset('frontend/images/bg/bg1.jpg') }});">
+    <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url({{asset('frontend/images/shape8.png')}});"></div>
     <div class="breadcrumb-outer">
     <div class="container">
     <div class="breadcrumb-content text-center">
@@ -188,7 +188,7 @@
     </div>
     </div>
     <div class="col-md-4">
-    <img src="{{url('frontend/images/cc.png')}}" alt class="rounded">
+    <img src="{{asset('frontend/images/cc.png')}}" alt class="rounded">
     </div>
     </div>
     </form>
@@ -228,7 +228,7 @@
     <div class="row">
     <div class="col-lg-4 col-md-4">
     <div class="trend-item2 rounded">
-    <a href="destination-single1.html/index.html" style="background-image: url(frontend/images/destination/destination17.jpg);"></a>
+    <a href="destination-single1.html/index.html" style="background-image: url({{asset('frontend/images/destination/destination17.jpg')}});"></a>
     <div class="color-overlay"></div>
     </div>
     </div>
@@ -326,7 +326,7 @@
     </section>
     
     
-    <section class="discount-action pt-0" style="background-image:url(frontend/images/section-bg1.png); background-position:center;">
+    <section class="discount-action pt-0" style="background-image:url({{asset('frontend/images/section-bg1.png')}}); background-position:center;">
     <div class="container">
     <div class="call-banner rounded pt-10 pb-14">
     <div class="call-banner-inner w-75 mx-auto text-center px-5">
@@ -350,7 +350,7 @@
     </div>
     <div class="white-overlay"></div>
     <div class="white-overlay"></div>
-    <div class="section-shape  top-inherit bottom-0" style="background-image: url(frontend/images/shape6.png);"></div>
+    <div class="section-shape  top-inherit bottom-0" style="background-image: url({{asset('frontend/images/shape6.png')}});"></div>
     </section>
 
 @endsection

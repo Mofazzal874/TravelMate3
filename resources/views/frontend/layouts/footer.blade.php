@@ -1,12 +1,12 @@
-<footer class="pt-20 pb-4" style="background-image: url(frontend/images/background_pattern.png);">
-    <div class="section-shape top-0" style="background-image: url(frontend/images/shape8.png);"></div>
+<footer class="pt-20 pb-4" style="background-image: url({{asset('frontend/images/background_pattern.png')}});">
+    <div class="section-shape top-0" style="background-image: url({{asset('frontend/images/shape8.png')}});"></div>
 
     <div class="footer-upper pb-4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4 pe-4">
                     <div class="footer-about">
-                        <img src="{{ url('frontend/images/logo-white.png') }}" alt>
+                        <img src="{{asset('frontend/images/logo-white.png') }}" alt>
                         <p class="mt-3 mb-3 white">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio suspendisse leo neque
                             iaculis molestie sagittis maecenas aenean eget molestie sagittis.

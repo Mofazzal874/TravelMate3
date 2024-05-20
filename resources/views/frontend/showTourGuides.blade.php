@@ -47,7 +47,7 @@
                             </div>
                             <div class="team-content text-center p-3 bg-theme">
                                 <h4 class="mb-1 white">
-                                    <a href="{{ route('tourGuideSingle', ['id' => $tg->id]) }}">
+                                    <a href="{{ route('tourGuideSingle', ['id' => $tg->user->id]) }}">
                                         {{ $tg->user->name }}
                                     </a>
                                 </h4>
