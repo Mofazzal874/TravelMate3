@@ -307,6 +307,28 @@
                                 </div>
                             </div>
                         </div> --}}
+
+                        {{-- //Booking section --}}
+                        <div id="booking" class="single-booking mb-4">
+                            <h4>Booking Section:</h4>
+                            <div class="d-flex flex-column">
+                                <div class="mb-3">
+                                    <h4 class="my-auto">Book a TourGuide in this Area</h4>
+                                    <div class="form-btn mt-2">
+                                        <a href="{{route('tourGuideForAPlace' , $destination->id)}}" class="nir-btn">Tour Guides</a>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <h4 class="my-auto">Book a hotel/Restaurant/Resort/Rental home</h4>
+                                    <div class="form-btn mt-2">
+                                        <a href="{{ url('frontend/images/itinery.png') }}" class="nir-btn">Hotel/Resort/Rental Home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        {{-- //Reviews --}}
                         <div id="single-review" class="single-review mb-4">
                             <h4>Average Reviews</h4>
                             <div class="row d-flex align-items-center">
@@ -326,45 +348,50 @@
                                         <div class="progress-item mb-1">
                                             <p class="mb-0">Cleanliness</p>
                                             <div class="progress rounded">
-                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $destination->cleanliness }}"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $destination->cleanliness }}%">
-                                                    <span class="sr-only">{{ $destination->cleanliness }}% Complete</span>
+                                                @php $cleanliness = rand(0, 100); @endphp
+                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $cleanliness }}"
+                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $cleanliness }}%">
+                                                    <span class="sr-only">{{ $cleanliness }}% Complete</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="progress-item mb-1">
                                             <p class="mb-0">Facilities</p>
                                             <div class="progress rounded">
-                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $destination->facilities }}"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $destination->facilities }}%">
-                                                    <span class="sr-only">{{ $destination->facilities }}% Complete</span>
+                                                @php $facilities = rand(0, 100); @endphp
+                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $facilities }}"
+                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $facilities }}%">
+                                                    <span class="sr-only">{{ $facilities }}% Complete</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="progress-item mb-1">
                                             <p class="mb-0">Value for money</p>
                                             <div class="progress rounded">
-                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $destination->value_for_money }}"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $destination->value_for_money }}%">
-                                                    <span class="sr-only">{{ $destination->value_for_money }}% Complete</span>
+                                                @php $valueForMoney = rand(0, 100); @endphp
+                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $valueForMoney }}"
+                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $valueForMoney }}%">
+                                                    <span class="sr-only">{{ $valueForMoney }}% Complete</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="progress-item mb-1">
                                             <p class="mb-0">Service</p>
                                             <div class="progress rounded">
-                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $destination->service }}"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $destination->service }}%">
-                                                    <span class="sr-only">{{ $destination->service }}% Complete</span>
+                                                @php $service = rand(0, 100); @endphp
+                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $service }}"
+                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $service }}%">
+                                                    <span class="sr-only">{{ $service }}% Complete</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="progress-item">
                                             <p class="mb-0">Location</p>
                                             <div class="progress rounded">
-                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $destination->location }}"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $destination->location }}%">
-                                                    <span class="sr-only">{{ $destination->location }}% Complete</span>
+                                                @php $location = rand(0, 100); @endphp
+                                                <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="{{ $location }}"
+                                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $location }}%">
+                                                    <span class="sr-only">{{ $location }}% Complete</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -372,6 +399,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         
 
                         {{-- <div id="single-comments" class="single-comments single-box mb-4">
@@ -494,7 +522,7 @@
                                         </li>
                                         <li>
                                             <a data-toggle="tab" href="#hotels"
-                                                class="rounded box-shadow mb-2 border-all">Hotels</a>
+                                                class="rounded box-shadow mb-2 border-all">Hotels/Rental Home/Resort</a>
                                         <li>
                                             <a data-toggle="tab" href="#booking"
                                                 class="rounded box-shadow mb-2 border-all">Booking</a>

@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tour_guides', function (Blueprint $table) {
-            $table->id(); 
+            $table->id();
+            $table->unsignedBigInteger('places_id'); 
             $table->string('userId')->unique();
             $table->string('operating_area')->nullable();
             $table->string('tour_type')->nullable();
@@ -21,6 +22,9 @@ return new class extends Migration
             $table->string('rating')->nullable();
             $table->string('tourist_capacity')->nullable();
             $table->timestamps();
+
+            // Foreign key constraint
+            $table->foreign('places_id')->references('id')->on('places')->onDelete('cascade'); // Update this line
         });
     }
 

@@ -7,21 +7,22 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PlacesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TourGuideController;
+use App\Http\Controllers\frontend\TGController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\PageController;
 
 
 
 
 //backend controllers
+use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\TourController;
-use App\Http\Controllers\Frontend\AboutusController;
 
 //admin page controllers
+use App\Http\Controllers\Frontend\AboutusController;
 use App\Http\Controllers\Frontend\BookingController;
-use App\Http\Controllers\Frontend\TourSingleController;
 
+use App\Http\Controllers\Frontend\TourSingleController;
 use App\Http\Controllers\Frontend\DestinationController;
 use App\Http\Controllers\Frontend\ContactAdminController;
 use App\Http\Controllers\Frontend\DestinationDetailController;
@@ -49,8 +50,9 @@ Route::get('/destination-detail',[DestinationDetailController::class, 'index']);
 Route::get('/booking', [BookingController::class, 'index']);
 
 // all about TourGuide
-Route::get('/tourGuide', [TourGuideController::class, 'index'])->name('tourGuide');
-Route::get('/tourGuideSingle/{id}', [TourGuideController::class, 'tourGuideProfile'])->name('tourGuideSingle');
+Route::get('/tourGuide', [TGController::class, 'index'])->name('tourGuide');
+Route::get('/tourGuideSingle/{id}', [TGController::class, 'tourGuideProfile'])->name('tourGuideSingle');
+Route::get('/tourGuides/place/{id}', [TGController::class, 'tourGuidesForAPlace'])->name('tourGuideForAPlace');
 
 
 
@@ -159,7 +161,7 @@ Route::middleware(['auth', 'user-access:tourGuide'])->group(function () {
 
     //Booking & pricing Info ->
     Route::get('tourGuide/bookingAndPricing', [TourGuideController::class, 'bookingAndPricing'])->name('tourGuide.bookingAndPricing');
-    Route::put('tourGuide/bookingAndPricing/edit/{id}', [TourGuideController::class, 'UpdateBookingAndPricing'])->name('tourGuide.bookingAndPricing.update');
+    Route::put('tourGuide/bookingAndPricing/edit/{id}', [TourGuideController::class, 'updateBookingAndPricing'])->name('tourGuide.bookingAndPricing.update');
 
     //Bookings showing in tour guide dashboard
     Route::get('tourGuide/bookings', [TourGuideController::class, 'bookings'])->name('tourGuide.bookings');

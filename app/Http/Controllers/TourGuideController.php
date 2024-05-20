@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Places;
 use App\Models\Message;
 use App\Models\TourGuide;
 use Illuminate\Http\Request;
@@ -11,17 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class TourGuideController extends Controller
 {
     //
-    public function index(){
-        $tourGuides = User::where('type', 3)->get(); 
-        return view('frontend.ShowTourGuides', compact('tourGuides'));
-    }
-
-    public function tourGuideProfile(String $id){  //this is user id
-        $tourGuide = TourGuide::where('userId', $id)->first();
-        $user = User::find($id);
-         // Pass the tour guide data to the view
-         return view('frontend.tourGuideSingle', compact('tourGuide' , 'user'));
-    }
+    
     //backend tourGuide functions 
 
     public function editProfile(){
@@ -54,7 +45,7 @@ class TourGuideController extends Controller
             'dob' => 'nullable|date',
             'experience' => 'nullable|string|max:255',
             'education' => 'nullable|string|max:255',
-            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Check if profile photo file is present in the request
@@ -91,23 +82,29 @@ class TourGuideController extends Controller
         $message->delete();
         return redirect()->route('tourGuide.messages')->with('success', 'Message deleted successfully.');
     }
-    public function bookingAndPricing(){
+    public function bookingAndPricing()
+    {
         $tourGuide = TourGuide::where('userId', auth()->user()->id)->first();
-        return view('tourGuide.bookingAndPricing.index', compact('tourGuide'));
+        $places = Places::all();
+        return view('tourGuide.bookingAndPricing.index', compact('tourGuide' , 'places'));
     }
-    public function updateBookingAndPricing(Request $request, string $id){
-        $tourGuide = TourGuide::find($id);
+
+    public function updateBookingAndPricing(Request $request, string $id)
+    {
+        $tourGuide = TourGuide::findOrFail($id); // Use findOrFail for better error handling
         $validatedData = $request->validate([
             'operating_area' => 'nullable|string|max:255',
+            'places_id' => 'nullable|exists:places,id', // Validate existence in places table
             'tour_type' => 'nullable|string|max:255',
             'tourist_type' => 'nullable|string|max:255',
             'price' => 'nullable|string|max:255',
             'rating' => 'nullable|string|max:255',
             'tourist_capacity' => 'nullable|string|max:255',
         ]);
-        $tourGuide->update($validatedData);
-        return redirect()->route('tourGuide.bookingAndPricing')->with('success', 'Booking and Pricing updated successfully.');
 
+        $tourGuide->update($validatedData);
+
+        return redirect()->route('tourGuide.bookingAndPricing')->with('success', 'Booking and Pricing updated successfully.');
     }
     
 }

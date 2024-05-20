@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Places extends Model
 {
@@ -29,4 +30,14 @@ class Places extends Model
         'placeStatus',
         'placeType'
     ];
+
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class, 'places_id');
+    }
+
+    public function tourGuides(): HasMany // Add this method
+    {
+        return $this->hasMany(TourGuide::class, 'places_id'); // Update this line
+    }
 }
