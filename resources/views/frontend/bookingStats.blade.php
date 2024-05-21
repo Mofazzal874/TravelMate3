@@ -20,7 +20,7 @@
         <div class="dot-overlay"></div>
     </section>
 
-
+    {{-- //Booking Information --}}
     <section class="trending pt-6 pb-0 bg-lgrey">
         <div class="container">
             <div class="row">
@@ -38,12 +38,6 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group mb-2">
-                                                <label>Booking Id</label>
-                                                <input type="text" name="" id="" value="{{$booking->id}}" required>
-                                            </div>
-                                        </div>
                                         <div class="col-md-5">
                                             <div class="form-group mb-2">
                                                 <label>First Name</label>
@@ -178,21 +172,24 @@
                                                 data-bs-target="#paypal" data-bs-toggle="tab" id="paypal-tab"
                                                 role="tab" type="button">Digital Payment</button>
                                         </li>
-                                        <li class="nav-item me-2 ms-0" role="presentation">
+                                        {{-- <li class="nav-item me-2 ms-0" role="presentation">
                                             <button aria-controls="card" aria-selected="false" class="nav-link"
                                                 data-bs-target="#card" data-bs-toggle="tab" id="card-tab"
                                                 role="tab" type="button">Credit/Debit card</button>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
 
                                     <div class="tab-content" id="postsTabContent1">
+                                        
+                                        {{-- //Debit/Credit card payment method is not implemented yet --}}
 
-                                        <div aria-labelledby="card-tab" class="tab-pane fade" id="card"
+                                        {{-- <div aria-labelledby="card-tab" class="tab-pane fade" id="card"
                                             role="tabpanel">
                                             <form>
                                                 <h5 class="mb-2 border-b pb-2"><i class="fa fa-credit-card"></i> Credit
                                                     Card</h5>
+                                                <h5 class="mb-2 border-b pb-2"><i class="fa fa-credit-card"></i> Eita kori nai ekhono.Experimental ache ekhono.</h5>
                                                 <div class="row align-items-center">
                                                     <div class="col-md-8">
                                                         <div class="card-detail">
@@ -231,20 +228,22 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                        </div>
+                                        </div> --}}
+
+                                        {{-- //Digital Payment Method--SSLCommerz --}}
                                         <div aria-labelledby="paypal-tab" class="tab-pane fade active show"
                                             id="paypal" role="tabpanel">
                                             <div class="paypal-card">
-                                                <h5 class="mb-2 border-b pb-2"><i class="fab fa-paypal"></i> Paypal</h5>
+                                                <h5 class="mb-2 border-b pb-2"><i class="fab fa-paypal"></i> SSLCommerz</h5>
                                                 <ul class>
                                                     <li class="d-block">To make the payment process secure and complete you
-                                                        will be redirected to Paypal Website.</li>
+                                                        will be redirected to SSLCommerz.</li>
                                                     <li class="d-block">
-                                                        <a href class="theme">Checkout via Paypal <i
+                                                        <a href class="theme">Checkout via SSLCommerz. <i
                                                                 class="fa fa-long-arrow-alt-right"></i></a>
                                                     </li>
                                                     <li class="d-block">The total Amount you will be charged is: <span
-                                                            class="fw-bold theme">$ 245.50</span></li>
+                                                            class="fw-bold theme">{{$tourGuide->price}} Tk.</span></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -256,9 +255,11 @@
                                             <input type="checkbox"> By continuing, you agree to the <a
                                                 href="#">Terms and Conditions.</a>
                                         </div>
-                                        <a href="#" class="nir-btn float-lg-end w-25">CONFIRM BOOKING</a>
+                                        <a href="#" class="nir-btn float-lg-end w-25">Proceed</a>
+                                        
                                     </form>
                                 </div>
+                                <br>
                             </div>
                             {{-- @endif --}}
                             {{-- @if ($booking->payment_status == 'paid') --}}
@@ -272,8 +273,10 @@
                         </div>
                     </div>
                 </div>
+                {{-- //place and tourGuide details --}}
                 <div class="col-lg-4 mb-4 ps-ld-4">
                     <div class="sidebar-sticky">
+                        {{-- //place details --}}
                         <div class="sidebar-item bg-white rounded box-shadow overflow-hidden p-3 mb-4">
                             <h4>Your Booking Details</h4>
                             <div class="trend-full border-b pb-2 mb-2">
@@ -281,23 +284,23 @@
                                     <div class="col-lg-4 col-md-4">
                                         <div class="trend-item2 rounded">
                                             <a href="destination-single1.html/index.html"
-                                                style="background-image: url({{ asset('frontend/images/destination/destination17.jpg') }});"></a>
+                                                style="background-image: url({{$place->imageURL ? asset('storage/' . $place->imageURL) : ''}});"></a>
                                             <div class="color-overlay"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-8 ps-0">
                                         <div class="trend-content position-relative">
                                             <div class="rating mb-1">
+                                                @php
+                                                $rating = (float) $place->rating;
+                                            @endphp
+                                            @for ($i = 0; $i < (int) $rating; $i++)
                                                 <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <small>200 Reviews</small>
+                                            @endfor
+                                                <small>({{ $rating }} Rated)</small>
                                             </div>
-                                            <h5 class="mb-1"><a href="grid-leftfilter.html/index.html">Adriatic
-                                                    Adventure–Zagreb To Athens</a></h5>
-                                            <h6 class="theme mb-0"><i class="icon-location-pin"></i> Croatia</h6>
+                                            <h5 class="mb-1"><a href="grid-leftfilter.html/index.html">{{ $place->placeType }}-{{ $place->name }}</a></h5>
+                                            <h6 class="theme mb-0"><i class="icon-location-pin"></i> {{$place->city}}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -306,77 +309,74 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="trend-check-item bg-grey rounded p-3 mb-2">
-                                            <p class="mb-0">Check In</p>
-                                            <h6 class="mb-0">Thu 21 Feb 2022</h6>
-                                            <small>15:00 - 22:00</small>
+                                            <p class="mb-0">Last Update:</p>
+                                            <h6 class="mb-0">{{$place->updated_at}}</h6>
+                                            <small>{{$place->opening_hours}}AM - {{$place->closing_hours}}PM</small>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="trend-check-item bg-grey rounded p-3 mb-2">
-                                            <p class="mb-0">Check Out</p>
-                                            <h6 class="mb-0">Tue 24 Feb 2022</h6>
-                                            <small>1:00 - 10:00</small>
+                                            <p class="mb-0">Price Last update:</p>
+                                            <h6 class="mb-0">{{$place->price}}</h6>
+                                            <small>{{$place->updated_at}}</small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="trend-check border-b pb-2 mb-2">
-                                <p class="mb-0">Total Length of Stay:</p>
-                                <h6 class="mb-0">8 Days | 7 Nights </h6>
-                                <small><a href="#" class="theme text-decoration-underline">travelling on different
-                                        dates?</a></small>
+                                <p class="mb-0">Minimum Time of cover:</p>
+                                <h6 class="mb-0">{{ (int)$place->minDuration + 1 }} Days | {{$place->minDuration}} Nights  </h6>
+                                <small><a href="{{$place->website}}" class="theme text-decoration-underline">Have a look to the places website</a></small>
                             </div>
                             <div class="trend-check">
-                                <p class="mb-0">You Selected:</p>
-                                <h6 class="mb-0">Superior Double Rooms <span class="float-end fw-normal">1 room, 3
-                                        adults</span> </h6>
-                                <small><a href="#" class="theme text-decoration-underline">Change your
-                                        selection</a></small>
+                                <p class="mb-0">Contact:</p>
+                                <h6 class="mb-0">Phone: <span class="float-end fw-normal">{{$place->phone}}</span> </h6>
                             </div>
                         </div>
+                        {{-- //tourGuide details --}}
                         <div class="sidebar-item bg-white rounded box-shadow overflow-hidden p-3 mb-4">
-                            <h4>Your Price Summary</h4>
+                            <h4>Your TourGuide Summary</h4>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td> Superior Twin</td>
-                                        <td class="theme2">$500.00</td>
+                                        <td> Guide Fee:</td>
+                                        <td class="theme2">{{$tourGuide->price}}tk</td>
                                     </tr>
                                     <tr>
-                                        <td>Number of Travellers</td>
-                                        <td class="theme2">3</td>
+                                        <td>Tourist Capacity(In person)</td>
+                                        <td class="theme2">{{$tourGuide->tourist_capacity}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Tax & fee</td>
-                                        <td class="theme2">$50.00</td>
+                                        <td>Tour Type</td>
+                                        <td class="theme2">{{$tourGuide->tour_type}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Booking Fee</td>
+                                        <td>Tax & Misc.</td>
                                         <td class="theme2">Free</td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
-                                        <td class="theme2">$550.00</td>
+                                        <td>Rating:</td>
+                                        <td class="theme2">{{$tourGuide->rating}}</td>
                                     </tr>
                                 </tbody>
                                 <tfoot class="bg-title">
                                     <tr>
-                                        <th class="font-weight-bold white">Amount</th>
-                                        <th class="font-weight-bold white">$550.00</th>
+                                        <th class="font-weight-bold white">Amount Payable:</th>
+                                        <th class="font-weight-bold white">{{$tourGuide->price}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                         <div class="sidebar-item bg-white rounded box-shadow overflow-hidden p-3 mb-4">
                             <h4>Your Payment Schedule</h4>
-                            <p class="mb-0">Before you book me , you'll pay <span class="float-end">$40.00</span></p>
+                            <p class="mb-0">Before you book me , you'll pay <span class="float-end">{{$tourGuide->price}} tk</span></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    {{-- //Love where you're going --}}
     <section class="discount-action pt-0"
         style="background-image:url({{ asset('frontend/images/section-bg1.png') }}); background-position:center;">
         <div class="container">
