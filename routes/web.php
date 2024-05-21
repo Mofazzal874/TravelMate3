@@ -53,8 +53,13 @@ Route::get('/booking', [BookingController::class, 'index']);
 Route::get('/tourGuide', [TGController::class, 'index'])->name('tourGuide');
 Route::get('/tourGuideSingle/{id}', [TGController::class, 'tourGuideProfile'])->name('tourGuideSingle');
 Route::get('/tourGuides/place/{id}', [TGController::class, 'tourGuidesForAPlace'])->name('tourGuideForAPlace');
+
+//eikhan theke mone hoy tourGuide middleware er kaj ta shuru kormu , bujhtachi na 
 Route::get('tourGuide/booking/{id}', [TGController::class, 'bookTourGuide'])->name('bookTourGuide');
-Route::post('tourGuide/storeForm', [TGController::class, 'submitBookingForm'])->name('tourGuide.storeForm');
+Route::post('tourGuide/storeForm/{id}', [TGController::class, 'submitBookingForm'])->name('tourGuide.storeForm'); //in the booking.blade.php file the form action is set to this route
+Route::get('tourGuide/bookingForm/{id}', [TGController::class, 'showBookingForm'])->name('tourGuide.bookingForm');      //user can see their booking from the user dashboard with route
+Route::put('tourGuide/updateForm/{id}', [TGController::class, 'updateBookingForm'])->name('tourGuide.updateForm'); //updating the booking data with this page using bookingStat.blade.php
+
 
 
 
@@ -157,10 +162,8 @@ Route::middleware(['auth', 'user-access:tourGuide'])->group(function () {
 
     Route::get('tourGuide/messages', [TourGuideController::class, 'messages'])->name('tourGuide.messages');
     Route::delete('tourGuide/messages/delete/{id}', [TourGuideController::class, 'deleteMessage'])->name('tourGuide.messages.delete');
-
     //places showing in tour guide dashboard
     // -------------------------------------
-
 
 
     //Booking & pricing Info ->
@@ -174,7 +177,10 @@ Route::middleware(['auth', 'user-access:tourGuide'])->group(function () {
     //delete koira dile abar user re feedback pathanor mechanism banaite hoibo ..abar porshudin ct ache..bai bad de 
 
 
-
-    
+    Route::get('tourGuide/pendingBookings' , [TourGuideController::class , 'showPendingBookings'])->name('tourGuide.pendingBookings');
+    Route::post('tourGuide/paymentStatus/update/{id}' , [TourGuideController::class , 'updatePaymentStatus'])->name('tourGuide.paymentStatus.update');
+    Route::get('tourGuide/pendingBookings/show/{id}' , [TourGuideController::class , 'bookingDetails'])->name('tourGuide.pendingBookings.show');
+    Route::delete('tourGuide/pendingBookings/destroy/{id}' , [TourGuideController::class , 'deleteBooking'])->name('tourGuide.pendingBookings.destroy');
+    Route::get('tourGuide/confirmedBookings' , [TourGuideController::class , 'confirmedBookings'])->name('tourGuide.confirmedBookings');
 
 });

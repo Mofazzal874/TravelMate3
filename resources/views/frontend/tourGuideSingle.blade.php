@@ -178,7 +178,7 @@
             <a href="{{ route('bookTourGuide', ['id' => $tourGuide->id]) }}" class="nir-btn">Book Now</a>
         </div>
     </div>
-    <section class="discount-action pt-8 pb-8" style="background-image: url(frontend/images/section-bg1.png); background-position: center;">
+    <section class="discount-action pt-8 pb-8" style="background-image: url({{asset('frontend/images/section-bg1.png')}}); background-position: center;">
         <div class="container mx-auto text-center">
             <h2 class="text-2xl lg:text-3xl xl:text-4xl font-bold text-black mb-3">Join Our <span class="text-theme">Professional & Friendly</span> Team</h2>
             <a href="/contact" class="button button--active mt-2">Contact With Us</a>

@@ -63,15 +63,6 @@
                         <span class="title">Messages</span>
                     </a>
                 </li>
-
-                {{-- <li>
-                    <a href="{{route('tourGuide.places')}}">
-                        <span class="icon">
-                            <ion-icon name="planet-outline"></ion-icon>
-                        </span>
-                        <span class="title">Places</span>
-                    </a>
-                </li> --}}
                 <li>
                     <a href="{{route('tourGuide.bookingAndPricing')}}">
                         <span class="icon">
@@ -81,11 +72,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('tourGuide.bookings')}}">
+                    <a href="{{route('tourGuide.pendingBookings')}}">
+                        <span class="icon">
+                            <ion-icon name="planet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Pending Bookings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('tourGuide.confirmedBookings')}}">
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon>
                         </span>
-                        <span class="title">Bookings</span>
+                        <span class="title">Confirmed Bookings</span>
                     </a>
                 </li>
                 <li>

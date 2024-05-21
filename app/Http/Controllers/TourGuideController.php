@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Places;
+use App\Models\Booking;
 use App\Models\Message;
 use App\Models\TourGuide;
 use Illuminate\Http\Request;
@@ -105,6 +106,30 @@ class TourGuideController extends Controller
         $tourGuide->update($validatedData);
 
         return redirect()->route('tourGuide.bookingAndPricing')->with('success', 'Booking and Pricing updated successfully.');
+    }
+
+    public function showPendingBookings()
+    {
+        $bookings = Booking::where('tourGuide_id', auth()->user()->tourGuide->id)
+            ->where('booking_status', 'pending')
+            ->get();
+        return view('tourGuide.pendingBookings.index', compact('bookings'));
+    }
+    public function updatePaymentstatus(Request $request, string $id)
+    {
+        $booking = Booking::findOrFail($id);
+        $validatedData = $request->validate([
+            'payment_status' => 'required|string|in:paid,not_paid',
+        ]);
+
+        $booking->update($validatedData);
+
+        return redirect()->route('tourGuide.pendingBookings')->with('success', 'Payment status updated successfully.');
+    }
+    public function bookingDetails(string $id)
+    {
+        $booking = Booking::findOrFail($id);
+        return view('tourGuide.pendingBookings.show', compact('booking'));
     }
     
 }

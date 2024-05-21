@@ -29,12 +29,17 @@
                         <div class="booking-box">
                             <div class="customer-information mb-4">
                                 <h3 class="border-b pb-2 mb-2">Traveller Information</h3>
-
-                                <form action="{{ route('tourGuide.storeForm') }}" method="POST" class="mb-2">
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success" style="text-green;">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                @endif
+                                {{-- passsing the tourGuide_id to the submitBookingForm method --}}
+                                <form action="{{route('tourGuide.storeForm' , ['id'=>$id])}}" method="POST" class="mb-2">
                                     @csrf
                                     <h5>Let us know who you are</h5>
                                     {{-- hidden input field to store the tourGuide_id --}}
-                                    <input type="hidden" name="tourGuide_id" value="{{ $id }}">
+                                    {{-- <input type="hidden" name="tourGuide_id" value="{{ $id }}"> --}}
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group mb-2">
@@ -110,7 +115,7 @@
 
                                     <!-- Submit button -->
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Book Now</button>
+                                        <button type="submit" class="nir-btn float-lg-end w-25">Book Now</button>
                                     </div>
                                 </form>
                             </div>
@@ -333,7 +338,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="discount-action pt-0"
         style="background-image:url({{ asset('frontend/images/section-bg1.png') }}); background-position:center;">
