@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Models\User;
+use App\Models\Places;
 use App\Models\Booking;
 use App\Models\TourGuide;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class TGController extends Controller
         session(['places_id' => $id]); //storing the places_id in the session to use it in the bookTourGuide function
         return view('frontend.showTourGuides', compact('tourGuides'))->with('isAllGuides', false);
     }
-    public function bookTourGuide(String $id)
+    public function bookTourGuide(String $id) //id is the tourGuide_id
     {
         // Retrieve places_id from the session
         $places_id = session('places_id');
@@ -43,9 +44,9 @@ class TGController extends Controller
         }
         // Sending the tourGuide_id to the booking.blade.php file so that it can be used in the form action
         // dd($id) ;
-        return view('frontend.booking', [
-            'id' => $id,
-        ]); // This will pass the $id variable to the view
+        $tourGuide = TourGuide::find($id);
+        $place = Places::find($places_id);
+        return view('frontend.booking', ['id' => $id, 'tourGuide'=>$tourGuide , 'place'=>$place]); // This will pass the $id variable to the view
     }
 
 
@@ -89,9 +90,10 @@ class TGController extends Controller
             'booking_status' => 'pending',
             'payment_status' => 'not_paid',
         ]);
-        
+        $tourGuide = TourGuide::find($id);
+        $place = Places::find($places_id);
         // Use the booking instance directly
-        return view('frontend.bookingStats', compact('booking'))->with('success', 'Booking has been submitted successfully. Please wait for approval from the tour guide.');
+        return view('frontend.bookingStats', compact('booking' , 'tourGuide' , 'place'))->with('success', 'Booking has been submitted successfully. Please wait for approval from the tour guide.');
     }
 
     public function showBookingForm(String $id)
@@ -125,7 +127,11 @@ class TGController extends Controller
             'city' => $request->city,
             'address_line1' => $request->address_line1,
             'address_line2' => $request->address_line2,
-        ]);
-        return view('frontend.bookingStats', compact('booking'))->with('success', 'Booking info updated successfully.');
+        ]); 
+    // Load related place and tour guide data
+    $place = Places::find($booking->places_id);
+    $tourGuide = TourGuide::find($booking->tourGuide_id);
+
+        return view('frontend.bookingStats', compact('booking' , 'place' , 'tourGuide'))->with('success', 'Booking info updated successfully.');
     }
 }
