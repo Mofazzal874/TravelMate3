@@ -13,7 +13,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('places_id')->constrained('places');
             $table->foreignId('tourGuide_id')->nullable()->constrained('tour_guides');
-            $table->foreignId('hotels_id')->nullable()->constrained('hotels');
             $table->string('f_name');
             $table->string('l_name');
             $table->string('email');

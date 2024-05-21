@@ -14,7 +14,6 @@ class Booking extends Model
         'user_id',
         'places_id',
         'tourGuide_id',
-        'hotels_id',
         'f_name',
         'l_name',
         'email',
@@ -44,8 +43,4 @@ class Booking extends Model
         return $this->belongsTo(TourGuide::class, 'tourGuide_id');
     }
 
-    public function hotel(): BelongsTo
-    {
-        return $this->belongsTo(Hotel::class, 'hotels_id');
-    }
 }
