@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Storage;
 class TourGuideController extends Controller
 {
     //
-    
+
     //backend tourGuide functions 
 
-    public function editProfile(){
+    public function editProfile()
+    {
         $profile = User::findOrFail(auth()->user()->id);
         return view('tourGuide.profile.edit', compact('profile'));
     }
@@ -76,7 +77,7 @@ class TourGuideController extends Controller
     }
     public function deleteMessage(string $id)
     {
-        
+
         // Find the message by ID
         $message = Message::findOrFail($id);
         // Delete the message
@@ -87,7 +88,7 @@ class TourGuideController extends Controller
     {
         $tourGuide = TourGuide::where('userId', auth()->user()->id)->first();
         $places = Places::all();
-        return view('tourGuide.bookingAndPricing.index', compact('tourGuide' , 'places'));
+        return view('tourGuide.bookingAndPricing.index', compact('tourGuide', 'places'));
     }
 
     public function updateBookingAndPricing(Request $request, string $id)
@@ -115,6 +116,13 @@ class TourGuideController extends Controller
             ->get();
         return view('tourGuide.pendingBookings.index', compact('bookings'));
     }
+    public function showConfirmedBookings()
+    {
+        $bookings = Booking::where('tourGuide_id', auth()->user()->tourGuide->id)
+            ->where('booking_status', 'approved')
+            ->get();
+        return view('tourGuide.confirmedBookings.index', compact('bookings'));
+    }
     public function updatePaymentstatus(Request $request, string $id)
     {
         $booking = Booking::findOrFail($id);
@@ -122,14 +130,37 @@ class TourGuideController extends Controller
             'payment_status' => 'required|string|in:paid,not_paid',
         ]);
 
-        $booking->update($validatedData);
+        // Determine the booking_status based on the payment_status
+        $bookingStatus = $validatedData['payment_status'] === 'paid' ? 'approved' : 'pending';
 
-        return redirect()->route('tourGuide.pendingBookings')->with('success', 'Payment status updated successfully.');
+        // Update both payment_status and booking_status
+        // dd($id) ; 
+        $booking->update([
+            'payment_status' => $validatedData['payment_status'],
+            'booking_status' => $bookingStatus,
+        ]);
+        if($validatedData['payment_status'] == 'paid'){
+            return redirect()->route('tourGuide.confirmedBookings')->with('success', 'Payment status  updated successfully.');
+        }
+        else {
+            return redirect()->route('tourGuide.pendingBookings')->with('success', 'Payment status updated successfully.');
+
+        }
     }
+
     public function bookingDetails(string $id)
     {
         $booking = Booking::findOrFail($id);
-        return view('tourGuide.pendingBookings.show', compact('booking'));
+        $place = Places::find($booking->places_id);
+        $tourGuide = TourGuide::find($booking->tourGuide_id);
+        return view('frontend.bookingStats', compact('booking' , 'place' , 'tourGuide'));
+    }
+    public function deleteBooking(string $id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->delete();
+        return redirect()->route('tourGuide.pendingBookings')->with('success', 'Booking deleted successfully.');
     }
     
+
 }

@@ -1,6 +1,6 @@
 @extends('layouts.tourGuideLayout')
 
-@section('title', 'Pending Bookings')
+@section('title', 'Confirmed Bookings')
 @section('pageTitle')
     <h1 class="font-bold text-2xl ml-3">All of your Pending Bookings List</h1>
 @endsection
@@ -54,7 +54,7 @@
                 {{ Session::get('success') }}
             </div>
         @endif
-        <table id="pendingBookings-table" class="display cell-border" style="width:100%">
+        <table id="confirmedBookings-table" class="display cell-border" style="width:100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -76,7 +76,7 @@
                             <td>{{ $rs->email }}</td>
                             <!-- Update the Role column -->
                             <td>
-                                <form action="{{ route('tourGuide.pendingBookings.paymentStatus.update', ['id' => $rs->id]) }}" method="POST">
+                                <form action="{{ route('tourGuide.confirmedBookings.paymentStatus.update', ['id' => $rs->id]) }}" method="POST">
                                     @csrf
                                     <!-- Provide a select input for updating the payment status -->
                                     <select name="payment_status" id="type" class="rounded">
@@ -92,12 +92,6 @@
                                 <div class="h-14 pt-5">
                                     <a href="{{ route('tourGuide.pendingBookings.show', $rs->id) }}" class="text-blue-800"><ion-icon
                                         name="eye-outline"></ion-icon></a>
-                                    <form action="{{ route('tourGuide.pendingBookings.destroy', $rs->id) }}" method="POST"
-                                        onsubmit="return confirm('Delete?')" class="float-right text-red-800">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button><ion-icon name="trash-outline"></ion-icon></button>
-                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -115,7 +109,7 @@
     <script src="{{ asset('assets/js/dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/dataTables.js') }}"></script>
     <script>
-        let table = new DataTable('#pendingBookings-table', {
+        let table = new DataTable('#confirmedBookings-table', {
             layout: {
                 top1Start: {
                     buttons: [{

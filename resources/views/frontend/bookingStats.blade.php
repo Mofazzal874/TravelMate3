@@ -161,7 +161,7 @@
                                         tourGuide</small>
                                 </div>
                             </div>
-                            {{-- @if ($booking->booking_status == 'approved') --}}
+                            @if ($booking->booking_status == 'approved')
                             <div class="customer-information card-information">
                                 <h3 class="border-b pb-2 mb-2">How do you want to pay?</h3>
                                 <div class="trending-topic-main">
@@ -261,15 +261,15 @@
                                 </div>
                                 <br>
                             </div>
-                            {{-- @endif --}}
-                            {{-- @if ($booking->payment_status == 'paid') --}}
+                            @endif
+                            @if ($booking->payment_status == 'paid')
                             <div class="customer-information card-information">
                                 <div class="alert alert-success">
                                     Your booking is approved. Please contact your tour guide through phone, email, or the
                                     message section on our website.
                                 </div>
                             </div>
-                            {{-- @endif --}}
+                            @endif
                         </div>
                     </div>
                 </div>

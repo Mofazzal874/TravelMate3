@@ -176,11 +176,14 @@ Route::middleware(['auth', 'user-access:tourGuide'])->group(function () {
     Route::delete('tourGuide/bookings/destroy/{id}', [TourGuideController::class, 'deleteBooking'])->name('tourGuide.bookings.destroy');   //eikhane ekhono ghapla ache 
     //delete koira dile abar user re feedback pathanor mechanism banaite hoibo ..abar porshudin ct ache..bai bad de 
 
-
+    //Pending bookings
     Route::get('tourGuide/pendingBookings' , [TourGuideController::class , 'showPendingBookings'])->name('tourGuide.pendingBookings');
-    Route::post('tourGuide/paymentStatus/update/{id}' , [TourGuideController::class , 'updatePaymentStatus'])->name('tourGuide.paymentStatus.update');
+    Route::post('tourGuide/pendingBookings/paymentStatus/update/{id}' , [TourGuideController::class , 'updatePaymentStatus'])->name('tourGuide.pendingBookings.paymentStatus.update');
     Route::get('tourGuide/pendingBookings/show/{id}' , [TourGuideController::class , 'bookingDetails'])->name('tourGuide.pendingBookings.show');
     Route::delete('tourGuide/pendingBookings/destroy/{id}' , [TourGuideController::class , 'deleteBooking'])->name('tourGuide.pendingBookings.destroy');
-    Route::get('tourGuide/confirmedBookings' , [TourGuideController::class , 'confirmedBookings'])->name('tourGuide.confirmedBookings');
 
+    //Confirmed bookings
+    Route::get('tourGuide/confirmedBookings' , [TourGuideController::class , 'showConfirmedBookings'])->name('tourGuide.confirmedBookings');
+    Route::post('tourGuide/confirmedBookings/paymentStatus/update/{id}' , [TourGuideController::class , 'updatePaymentStatus'])->name('tourGuide.confirmedBookings.paymentStatus.update');
+    Route::get('tourGuide/confirmedBookings/show/{id}' , [TourGuideController::class , 'bookingDetails'])->name('tourGuide.confirmedBookings.show');
 });
