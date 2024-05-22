@@ -106,7 +106,7 @@
 
                 <div class="flex items-center">
                     <button class="flex items-center px-3 py-2 focus:outline-none hover:bg-gray-200 hover:rounded-md">
-                        <ion-icon name="notifications-outline"></ion-icon>
+                        <a href="{{route('home')}}">Home</a>
                     </button>
 
                     <button data-dropdown class="flex items-center px-3 py-2 focus:outline-none hover:bg-gray-200 hover:rounded-md" type="button" x-data="{ open: false }" @click="open = true" :class="{ 'bg-gray-200 rounded-md': open }">
