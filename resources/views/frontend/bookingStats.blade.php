@@ -299,7 +299,7 @@
                                             @endfor
                                                 <small>({{ $rating }} Rated)</small>
                                             </div>
-                                            <h5 class="mb-1"><a href="grid-leftfilter.html/index.html">{{ $place->placeType }}-{{ $place->name }}</a></h5>
+                                            <h5 class="mb-1"><a href="{{route('tourSingle', $place->id)}}">{{ $place->placeType }}-{{ $place->name }}</a></h5>
                                             <h6 class="theme mb-0"><i class="icon-location-pin"></i> {{$place->city}}</h6>
                                         </div>
                                     </div>

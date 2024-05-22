@@ -61,7 +61,7 @@
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Payment Status</th>
+                    <th>Booking Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -74,20 +74,20 @@
                             <td>{{ $rs->f_name.' '.$rs->l_name }}</td>
                             <td>{{ $rs->phone}}</td>
                             <td>{{ $rs->email }}</td>
-                            <!-- Update the Role column -->
+                            <!-- Update the booking status column -->
                             <td>
-                                <form action="{{ route('tourGuide.pendingBookings.paymentStatus.update', ['id' => $rs->id]) }}" method="POST">
+                                <form action="{{ route('tourGuide.pendingBookings.bookingStatus.update', ['id' => $rs->id]) }}" method="POST">
                                     @csrf
-                                    <!-- Provide a select input for updating the payment status -->
-                                    <select name="payment_status" id="type" class="rounded">
-                                        <option value="not_paid" {{ $rs->payment_status == 'not_paid' ? 'selected' : '' }}>Not Paid</option>
-                                        <option value="paid" {{ $rs->payment_status == 'paid' ? 'selected' : '' }}>Paid
-                                        </option>
+                                    <!-- Provide a select input for updating the booking status -->
+                                    <select name="booking_status" id="booking_status" class="rounded">
+                                        <option value="pending" {{ $rs->booking_status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="approved" {{ $rs->booking_status == 'approved' ? 'selected' : '' }}>Approved</option>
                                     </select>
                                     <!-- Update button -->
                                     <button type="submit" class="rounded-button">Update</button>
                                 </form>
                             </td>
+                        
                             <td>
                                 <div class="h-14 pt-5">
                                     <a href="{{ route('tourGuide.pendingBookings.show', $rs->id) }}" class="text-blue-800"><ion-icon

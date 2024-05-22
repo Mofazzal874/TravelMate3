@@ -61,6 +61,7 @@
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>
+                    <th>Booking Status</th>
                     <th>Payment Status</th>
                     <th>Actions</th>
                 </tr>
@@ -74,6 +75,21 @@
                             <td>{{ $rs->f_name.' '.$rs->l_name }}</td>
                             <td>{{ $rs->phone}}</td>
                             <td>{{ $rs->email }}</td>
+                            <td>
+                                <form action="{{ route('tourGuide.confirmedBookings.bookingStatus.update', ['id' => $rs->id]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <!-- Provide a select input for updating the booking status -->
+                                    <select name="booking_status" id="type" class="rounded">
+                                        <option value="pending" {{ $rs->booking_status == 'pending' ? 'selected' : '' }}>Pending
+                                        </option>
+                                        <option value="confirmed" {{ $rs->booking_status == 'approved' ? 'selected' : '' }}>
+                                            Approved</option>
+                                    </select>
+                                    <!-- Update button -->
+                                    <button type="submit" class="rounded-button">Update</button>
+                                </form>
+                            </td>
                             <!-- Update the Role column -->
                             <td>
                                 <form action="{{ route('tourGuide.confirmedBookings.paymentStatus.update', ['id' => $rs->id]) }}" method="POST">

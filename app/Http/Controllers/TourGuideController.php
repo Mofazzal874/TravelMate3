@@ -123,29 +123,30 @@ class TourGuideController extends Controller
             ->get();
         return view('tourGuide.confirmedBookings.index', compact('bookings'));
     }
+    public function updateBookingStatus(Request $request, string $id)
+    {
+        $booking = Booking::findOrFail($id);
+        $validatedData = $request->validate([
+            'booking_status' => 'required|string|in:pending,approved',
+        ]);
+
+        $booking->update([
+            'booking_status' => $validatedData['booking_status'],
+        ]);
+
+        return redirect()->route('tourGuide.confirmedBookings')->with('success', 'Booking status updated successfully.');
+    }
+
     public function updatePaymentstatus(Request $request, string $id)
     {
         $booking = Booking::findOrFail($id);
         $validatedData = $request->validate([
             'payment_status' => 'required|string|in:paid,not_paid',
         ]);
-
-        // Determine the booking_status based on the payment_status
-        $bookingStatus = $validatedData['payment_status'] === 'paid' ? 'approved' : 'pending';
-
-        // Update both payment_status and booking_status
-        // dd($id) ; 
         $booking->update([
             'payment_status' => $validatedData['payment_status'],
-            'booking_status' => $bookingStatus,
         ]);
-        if($validatedData['payment_status'] == 'paid'){
-            return redirect()->route('tourGuide.confirmedBookings')->with('success', 'Payment status  updated successfully.');
-        }
-        else {
-            return redirect()->route('tourGuide.pendingBookings')->with('success', 'Payment status updated successfully.');
-
-        }
+        return redirect()->route('tourGuide.confirmedBookings')->with('success', 'Payment status updated successfully.');
     }
 
     public function bookingDetails(string $id)
@@ -153,7 +154,7 @@ class TourGuideController extends Controller
         $booking = Booking::findOrFail($id);
         $place = Places::find($booking->places_id);
         $tourGuide = TourGuide::find($booking->tourGuide_id);
-        return view('frontend.bookingStats', compact('booking' , 'place' , 'tourGuide'));
+        return view('frontend.bookingStats', compact('booking', 'place', 'tourGuide'));
     }
     public function deleteBooking(string $id)
     {
@@ -161,6 +162,4 @@ class TourGuideController extends Controller
         $booking->delete();
         return redirect()->route('tourGuide.pendingBookings')->with('success', 'Booking deleted successfully.');
     }
-    
-
 }

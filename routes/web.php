@@ -178,12 +178,13 @@ Route::middleware(['auth', 'user-access:tourGuide'])->group(function () {
 
     //Pending bookings
     Route::get('tourGuide/pendingBookings' , [TourGuideController::class , 'showPendingBookings'])->name('tourGuide.pendingBookings');
-    Route::post('tourGuide/pendingBookings/paymentStatus/update/{id}' , [TourGuideController::class , 'updatePaymentStatus'])->name('tourGuide.pendingBookings.paymentStatus.update');
+    Route::post('tourGuide/pendingBookings/bookingStatus/update/{id}', [TourGuideController::class, 'updateBookingStatus'])->name('tourGuide.pendingBookings.bookingStatus.update');
     Route::get('tourGuide/pendingBookings/show/{id}' , [TourGuideController::class , 'bookingDetails'])->name('tourGuide.pendingBookings.show');
     Route::delete('tourGuide/pendingBookings/destroy/{id}' , [TourGuideController::class , 'deleteBooking'])->name('tourGuide.pendingBookings.destroy');
 
     //Confirmed bookings
     Route::get('tourGuide/confirmedBookings' , [TourGuideController::class , 'showConfirmedBookings'])->name('tourGuide.confirmedBookings');
+    Route::post('tourGuide/confirmedBookings/bookingStatus/update/{id}' , [TourGuideController::class , 'updateBookingStatus'])->name('tourGuide.confirmedBookings.bookingStatus.update');
     Route::post('tourGuide/confirmedBookings/paymentStatus/update/{id}' , [TourGuideController::class , 'updatePaymentStatus'])->name('tourGuide.confirmedBookings.paymentStatus.update');
     Route::get('tourGuide/confirmedBookings/show/{id}' , [TourGuideController::class , 'bookingDetails'])->name('tourGuide.confirmedBookings.show');
 });
