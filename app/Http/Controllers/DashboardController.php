@@ -17,7 +17,8 @@ class DashboardController extends Controller
  
     public function userDashboard()
     {
-        return view('user.dashboard');
+        $profile = User::findOrFail(auth()->user()->id);
+        return view('user.profile.dashboard', compact('profile'));
     }
  
     public function adminDashboard()

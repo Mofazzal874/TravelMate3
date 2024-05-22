@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
     //
-
+    // dasboard function is in DashboardController
     public function editProfile()
     {
         $profile = User::findOrFail(auth()->user()->id);

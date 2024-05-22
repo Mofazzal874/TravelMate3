@@ -14,7 +14,9 @@ class TourGuideController extends Controller
 {
     //
 
-    //backend tourGuide functions 
+    //backend tourGuide functions
+    
+    //dashboard function is in DashboardController
 
     public function editProfile()
     {

@@ -3,25 +3,26 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 //frontend controllers 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PlacesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TourGuideController;
 use App\Http\Controllers\frontend\TGController;
 use App\Http\Controllers\Frontend\BlogController;
-use App\Http\Controllers\Frontend\HomeController;
 
 
 
 
 //backend controllers
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController;
-use App\Http\Controllers\Frontend\TourController;
 
 //admin page controllers
+use App\Http\Controllers\Frontend\TourController;
 use App\Http\Controllers\Frontend\AboutusController;
-use App\Http\Controllers\Frontend\BookingController;
 
+use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\TourSingleController;
 use App\Http\Controllers\Frontend\DestinationController;
 use App\Http\Controllers\Frontend\ContactAdminController;
@@ -115,6 +116,16 @@ Route::controller(AuthController::class)->group(function () {
 //Normal User Routes list
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
+    Route::get('user/dashboard/edit/{id}', [UserController::class, 'editProfile'])->name('user.profile.edit');
+    Route::put('user/dashboard/edit/{id}', [UserController::class, 'updateProfile'])->name('user.profile.update');
+
+    Route::get('user/messages', [UserController::class, 'messages'])->name('user.messages');
+    Route::delete('user/messages/delete/{id}', [UserController::class, 'deleteMessage'])->name('user.messages.delete');
+
+    Route::get('user/bookings', [UserController::class, 'bookings'])->name('user.bookings');
+    Route::get('user/bookings/show/{id}', [UserController::class, 'bookingDetails'])->name('user.bookings.show');
+    Route::delete('user/bookings/destroy/{id}', [UserController::class, 'deleteBooking'])->name('user.bookings.destroy');
+    
 });
 
 //Admin Routes list
