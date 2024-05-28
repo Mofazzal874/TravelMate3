@@ -1,9 +1,9 @@
 @extends('frontend.layouts.main')
 
 @section('main-container')
-    <section class="breadcrumb-main pb-20 pt-14" style="background-image: url(frontend/images/bg/bg1.jpg);">
+    <section class="breadcrumb-main pb-20 pt-14" style="background-image: url({{asset('frontend/images/bg/bg1.jpg')}});">
         <div class="section-shape section-shape1 top-inherit bottom-0"
-            style="background-image: url(frontend/images/shape8.png);"></div>
+            style="background-image: url({{asset('frontend/images/shape8.png')}});"></div>
         <div class="breadcrumb-outer">
             <div class="container">
                 <div class="breadcrumb-content text-center">
@@ -23,7 +23,7 @@
 
     <section class="trending pt-6 pb-0 bg-lgrey">
         <div class="container">
-            <div class="list-results d-flex align-items-center justify-content-between">
+            {{-- <div class="list-results d-flex align-items-center justify-content-between">
                 <div class="list-results-sort">
                     <p class="m-0">Showing 1-5 of 80 results</p>
                 </div>
@@ -40,7 +40,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 @foreach ($places as $place)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-6 mb-4">
@@ -85,7 +85,7 @@
 
 
     <section class="discount-action pt-0"
-        style="background-image:url(frontend/images/section-bg1.png); background-position:center;">
+        style="background-image:url({{asset('frontend/images/section-bg1.png')}}); background-position:center;">
         <div class="container">
             <div class="call-banner rounded pt-10 pb-14">
                 <div class="call-banner-inner w-75 mx-auto text-center px-5">
@@ -109,6 +109,6 @@
             </div>
         </div>
         <div class="white-overlay"></div>
-        <div class="section-shape  top-inherit bottom-0" style="background-image: url(frontend/images/shape6.png);"></div>
+        <div class="section-shape  top-inherit bottom-0" style="background-image: url({{asset('frontend/images/shape6.png')}});"></div>
     </section>
 @endsection

@@ -14,11 +14,11 @@
                 </div>
                 <div class="links float-right">
                     <ul>
-                        <li><a href="#" class="white"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#" class="white"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#" class="white"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <li><a href="{{url('https://www.facebook.com/travelMate')}}" class="white"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="{{url('https://www.twitter.com/travelMate')}}" class="white"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="{{url('https://www.instagram.com/travelMate')}}" class="white"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                         </li>
-                        <li><a href="#" class="white"><i class="fab fa-linkedin " aria-hidden="true"></i></a>
+                        <li><a href="{{url('https://www.linkedin.com/in/travelMateOfficial')}}" class="white"><i class="fab fa-linkedin " aria-hidden="true"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -40,29 +40,51 @@
                             <ul class="nav navbar-nav" id="responsive-menu">
 
                                 <li><a href="{{ url('/') }}">Home</a></li>
-                                <li><a href="{{ url('/about') }}">About Us</a></li>
-                                <li><a href="{{ route('allDestination') }}">ALL Destination</a></li>
+                                <li><a href="{{ route('bestDestination.tour') }}">Deals</a></li>
+                                <li><a href="{{ route('allDestination') }}">Destinations</a></li>
                                 <li class="submenu dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false">Pages <i class="icon-arrow-down"
                                             aria-hidden="true"></i></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ url('/booking') }}">Booking</a></li>
-                                        <li><a href="{{ url('/service') }}">Services</a></li>
-                                        <li><a href="{{ url('/gallery') }}">Gallery</a></li>
+                                        <li><a href="{{ route('tourGuide') }}">TourGuides</a></li>
+                                        <li><a href="{{ route('gallery.tour')}}">Gallery</a></li>
                                         <li><a href="{{ url('/contact') }}">Contact Us</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ url('/blog') }}">Blogs</a></li>
+                                <li><a href="{{ route('topDestination.tour') }}">Top Picks</a></li>
                                 <li><a href="{{ url('/contact') }}">Contact</a></li>
 
                             </ul>
                         </div>
                         <div class="register-login d-flex align-items-center">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="me-3">
+                            @guest
+                            <a href="{{route('login')}}"  class="me-3">
                                 <i class="icon-user"></i> Login/Register
                             </a>
-                            <a href="{{ url('/booking') }}" class="nir-btn white">Book Now</a>
+                            @endguest
+                            @auth
+                            <div class="nav navbar-nav" id="responsive-menu">
+                                <li class="submenu dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <img src="{{ auth()->user()->image? asset('storage/' . auth()->user()->image) : '' }}"  class="rounded-circle" width="30" height="30"> 
+                                        {{ auth()->user()->name }} <i class="icon-arrow-down" aria-hidden="true"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @if(auth()->user()->type == 'user')
+                                            <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                                        @elseif(auth()->user()->type == 'admin')
+                                            <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                        @elseif(auth()->user()->type == 'manager')
+                                            <li><a href="{{ route('manager.dashboard') }}">Dashboard</a></li>
+                                        @elseif(auth()->user()->type == 'tourGuide')
+                                            <li><a href="{{ route('tourGuide.dashboard') }}">Dashboard</a></li>
+                                        @endif
+                                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </div>
+                            @endauth
                         </div>
                         <div id="slicknav-mobile"></div>
                     </div>

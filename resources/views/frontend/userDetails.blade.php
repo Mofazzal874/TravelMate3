@@ -126,26 +126,6 @@
                             <input type="text" class="input w-full bg-gray-200 border mt-2" value="{{ $user->skills }}"
                                 disabled>
                         </div>
-                        <div class="mt-3">
-                            <label class="font-semibold">Operating Area</label>
-                            <input type="text" class="input w-full bg-gray-200 border mt-2"
-                                value="{{ $tourGuide->operating_area }}" disabled>
-                        </div>
-                        <div class="mt-3">
-                            <label class="font-semibold">Tour Types</label>
-                            <input type="text" class="input w-full bg-gray-200 border mt-2"
-                                value="{{ $tourGuide->tour_type }}" disabled>
-                        </div>
-                        <div class="mt-3">
-                            <label class="font-semibold">Tourist Type</label>
-                            <input type="text" class="input w-full bg-gray-200 border mt-2"
-                                value="{{ $tourGuide->tourist_type }}" disabled>
-                        </div>
-                        <div class="mt-3">
-                            <label class="font-semibold">Tourist Capacity</label>
-                            <input type="text" class="input w-full bg-gray-200 border mt-2 mb-7"
-                                value="{{ $tourGuide->tourist_capacity }}" disabled>
-                        </div>
                     </div>
                     <div class="col-span-12 xl:col-span-6">
                         <div>
@@ -177,28 +157,10 @@
                             <input type="text" class="input w-full bg-gray-200 border mt-2 mb-7"
                                 value="{{ $user->education }}" disabled>
                         </div>
-                        <div class="mt-3">
-                            <label class="font-semibold">Price</label>
-                            <input type="text" class="input w-full bg-gray-200 border mt-2 mb-7"
-                                value="{{ $tourGuide->price }}" disabled>
-                        </div>
-                        <div class="mt-3">
-                            <label class="font-semibold">Rating</label>
-                            <input type="text" class="input w-full bg-gray-200 border mt-2 mb-7"
-                                value="{{ $tourGuide->rating }}" disabled>
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Book a TourGuide Button Section -->
-        <div class="text-center my-8">
-            <h4 class="text-xl font-bold mb-3">Book me as your Guide</h4>
-            <div class="form-btn mt-2">
-
-                <a href="{{ route('bookTourGuide', ['id' => $tourGuide->id]) }}" class="nir-btn">Book Now</a>
-            </div>
-        </div>
         <section class="discount-action pt-8 pb-8"
             style="background-image: url({{ asset('frontend/images/section-bg1.png') }}); background-position: center;">
             <div class="container mx-auto text-center">

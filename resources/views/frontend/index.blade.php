@@ -18,6 +18,7 @@
 @section('main-container')
     <div class="tet"></div>
 
+    {{-- start banner --}}
     <section class="banner pt-10 pb-0 overflow-hidden" style="background-image:url(frontend/images/testimonial.png);">
         <div class="container">
             <div class="banner-in">
@@ -26,9 +27,8 @@
                         <div class="banner-content text-lg-start text-center">
                             <h4 class="theme mb-0">Explore The World</h4>
                             <h1>Start Planning Your Dream Trip Today!</h1>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore</p>
-                            <div class="book-form">
+                            <p class="mb-4">Discover-Connect-Explore-This is what we believe in ..Find your favourite place. Gather information  , book Guides or Just go..</p>
+                            {{-- <div class="book-form">
                                 <div class="row d-flex align-items-center justify-content-between">
                                     <div class="col-lg-6 mb-2">
                                         <div class="form-group">
@@ -79,12 +79,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-lg-6 mb-4">
                         <div class="banner-image">
-                            <img src="{{ url('frontend/images/travel.png') }}" alt>
+                            <img src="{{ asset('frontend/images/travel.png') }}" alt>
                         </div>
                     </div>
                 </div>
@@ -93,36 +93,18 @@
                         <div class="col-lg-3 col-md-6 my-4">
                             <div class="category-item box-shadow p-3 py-4 text-center bg-white rounded overflow-hidden">
                                 <div class="trending-topic-content">
-                                    <img src="{{ url('frontend/images/icons/004-camping-tent.png') }}"
+                                    <img src="{{ asset('frontend/images/icons/004-camping-tent.png') }}"
                                         class="mb-1 d-inline-block" alt>
-                                    <h4 class="mb-0"><a href="{{ url('/tour') }}">Camping</a></h4>
+                                    <h4 class="mb-0"><a href="{{ route('camping') }}">Camping</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 my-4">
                             <div class="category-item box-shadow p-3 py-4 text-center bg-white rounded overflow-hidden">
                                 <div class="trending-topic-content text-center">
-                                    <img src="{{ url('frontend/images/icons/003-hiking.png') }}" class="mb-1 d-inline-block"
+                                    <img src="{{ asset('frontend/images/icons/003-hiking.png') }}" class="mb-1 d-inline-block"
                                         alt>
-                                    <h4 class="mb-0"><a href="{{ url('/tour') }}">Hiking</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 my-4">
-                            <div class="category-item box-shadow p-3 py-4 text-center bg-white rounded overflow-hidden">
-                                <div class="trending-topic-content">
-                                    <img src="{{ url('frontend/images/icons/005-sunbed.png') }}" class="mb-1 d-inline-block"
-                                        alt>
-                                    <h4 class="mb-0"><a href="{{ url('/tour') }}">Beach Tours</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 my-4">
-                            <div class="category-item box-shadow p-3 py-4 text-center bg-white rounded overflow-hidden">
-                                <div class="trending-topic-content">
-                                    <img src="{{ url('frontend/images/icons/008-cycling.png') }}"
-                                        class="mb-1 d-inline-block" alt>
-                                    <h4 class="mb-0"><a href="{{ url('/tour') }}">Biking</a></h4>
+                                    <h4 class="mb-0"><a href="{{ route('hiking')}}">Hiking</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +113,7 @@
                                 <div class="trending-topic-content">
                                     <img src="{{ url('frontend/images/icons/006-surf.png') }}" class="mb-1 d-inline-block"
                                         alt>
-                                    <h4 class="mb-0"><a href="{{ url('/tour') }}">Surfing</a></h4>
+                                    <h4 class="mb-0"><a href="{{ route('adventure') }}">Adventure</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -140,16 +122,7 @@
                                 <div class="trending-topic-content">
                                     <img src="{{ url('frontend/images/icons/002-safari.png') }}"
                                         class="mb-1 d-inline-block" alt>
-                                    <h4 class="mb-0"><a href="{{ url('/tour') }}">Safari</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 my-4">
-                            <div class="category-item box-shadow p-3 py-4 text-center bg-white rounded overflow-hidden">
-                                <div class="trending-topic-content">
-                                    <img src="{{ url('frontend/images/icons/008-cycling.png') }}"
-                                        class="mb-1 d-inline-block" alt>
-                                    <h4 class="mb-0"><a href="{{ url('/tour') }}">Cycling</a></h4>
+                                    <h4 class="mb-0"><a href="{{ route('wildlife') }}">Wildlife</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +131,7 @@
                                 <img src="{{ url('frontend/images/icons/007-hiking-1.png') }}"
                                     class="mb-1 d-inline-block" alt>
                                 <div class="trending-topic-content">
-                                    <h4 class="mb-0"><a href="{{ url('/tour') }}">Trekings</a></h4>
+                                    <h4 class="mb-0"><a href="{{ route('trekking') }}">Trekings</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -168,13 +141,14 @@
         </div>
     </section>
 
+    {{-- 3 step of the perfect tour --}}
     <section class="about-us pb-6 pt-6"
         style="background-image:url(frontend/images/shape4.png); background-position:center;">
         <div class="container">
             <div class="section-title mb-6 w-50 mx-auto text-center">
-                <h4 class="mb-1 theme1">3 Step of The Perfect Tour</h4>
+                <h4 class="mb-1 theme1">4 Step of The Perfect Tour</h4>
                 <h2 class="mb-1">Find <span class="theme">Travel Perfection</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                <p>Don't know what to do?Can't find your Desired place?Follow the steps......
                 </p>
             </div>
 
@@ -187,8 +161,8 @@
                                     <div class="why-us-icon">
                                         <i class="icon-flag theme"></i>
                                     </div>
-                                    <h4><a href="{{ url('/about') }}">Tell Us What You want To Do</a></h4>
-                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+                                    <h4><a href="{{ url('/contact') }}">Tell Us Where You want To go</a></h4>
+                                    <p class="mb-0">Tell us about the place that you want to visit..If the destination doesn't exist in the website , we'll shortly add it..</p>
                                 </div>
                             </div>
                         </div>
@@ -198,8 +172,8 @@
                                     <div class="why-us-icon">
                                         <i class="icon-location-pin theme"></i>
                                     </div>
-                                    <h4><a href="{{ url('/about') }}">Share Your Travel Locations</a></h4>
-                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+                                    <h4><a href="{{ url('/contact') }}">Share Your Travel Locations</a></h4>
+                                    <p class="mb-0">Tell a descriptive details about your destination location and you location.</p>
                                 </div>
                             </div>
                         </div>
@@ -209,8 +183,8 @@
                                     <div class="why-us-icon">
                                         <i class="icon-directions theme"></i>
                                     </div>
-                                    <h4><a href="{{ url('/about') }}">Share Your Travel Preference</a></h4>
-                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+                                    <h4><a href="{{ url('/contact') }}">Share Your Travel Preference</a></h4>
+                                    <p class="mb-0">Tell us how do you want to travel , How many people you want to travel with , how many days you will be travelling .</p>
                                 </div>
                             </div>
                         </div>
@@ -220,8 +194,8 @@
                                     <div class="why-us-icon">
                                         <i class="icon-compass theme"></i>
                                     </div>
-                                    <h4><a href="{{ url('/about') }}">We are 100% Trusted Tour Agency</a></h4>
-                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+                                    <h4><a href="{{ route('about') }}">Meet Our Amazing Team...</a></h4>
+                                    <p class="mb-0">Meet our company's amazing team , managing everything from start to end .</p>
                                 </div>
                             </div>
                         </div>
@@ -314,11 +288,7 @@
                         <div class="about-content text-center text-lg-start mb-4">
                             <h4 class="theme d-inline-block mb-0">Get To Know Us</h4>
                             <h2 class="border-b mb-2 pb-1">Explore All Tour of the world with us.</h2>
-                            <p class="border-b mb-2 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat.<br><br>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                officia deserunt mollit anim id est laborum.</p>
+                            <p class="border-b mb-2 pb-2">Our team is composed of highly dedicated and hardworking professionals committed to ensuring that every user has a seamless travel experience.<br><br>Our commitment to excellence is evident through continuous improvement, regularly updating the app with new features and enhancements based on user feedback and industry trends. We prioritize a user-centric approach, ensuring the app is always user-friendly and meets user expectations. Our team works to integrate various travel-related services, such as booking systems, local guides, and travel tips, into a single platform. Ensuring security and privacy is paramount, as we work to build trust and reliability among users.</p>
                             <div class="about-listing">
                                 <ul class="d-flex justify-content-between">
                                     <li><i class="icon-location-pin theme"></i> Tour Guide</li>
@@ -328,7 +298,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    {{-- <div class="col-lg-12">
 
                         <div class="counter-main w-75 float-end d-none d-md-block">
                             <div class="counter p-4 pb-0 box-shadow bg-white rounded">
@@ -369,7 +339,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -505,10 +475,9 @@
                     <div class="trend-content-main">
                         <div class="trend-content mb-5 pb-2 px-5">
                             <h5 class="mb-1 theme">Love Where Your're Going</h5>
-                            <h2><a href="{{ url('/tour') }}">Explore Your Life, <span class="theme1"> Travel Where
+                            <h2><a href="{{ route('allDestination') }}">Explore Your Life, <span class="theme1"> Travel Where
                                         You Want!</span></a></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
+                            <p>Discover-Connect-Explore ..this is what we believe ..Find your favourite place. Gather information  , book Guides or Just go..</p>
                         </div>
                         <div class="video-button text-center position-relative">
                             <div class="call-button text-center">

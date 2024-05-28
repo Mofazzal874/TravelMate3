@@ -40,11 +40,26 @@ use App\Http\Controllers\Frontend\DestinationDetailController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [AboutusController::class, 'index']);
+Route::get('/about', [AboutusController::class, 'index'])->name('about');
+Route::get('/userDetails/{id}', [AboutusController::class, 'userDetails'])->name('userDetails');
 
 Route::get('/allDestination', [TourController::class, 'allDestination'])->name('allDestination');
 Route::get('bestDestination/tour', [TourController::class, 'bestDestination'])->name('bestDestination.tour');
 Route::get('generalDestination/tour', [TourController::class, 'generalDestination'])->name('generalDestination.tour');
+Route::get('gallery/tour', [TourController::class, 'gallery'])->name('gallery.tour');
+Route::get('topDestination/tour', [TourController::class, 'topDestination'])->name('topDestination.tour');
+
+Route::get('/contact', function () { return view('frontend.contactus'); });
+//send message to admin (both user and unregistered user can send message)
+Route::post('/send-message', [ContactAdminController::class, 'sendMessage'])->name('send.message');
+
+//Destination Types routes
+Route::get('/hiking', [TourController::class, 'hiking'])->name('hiking');
+Route::get('/camping', [TourController::class, 'camping'])->name('camping');
+Route::get('/trekking', [TourController::class, 'trekking'])->name('trekking');
+Route::get('/adventure', [TourController::class, 'adventure'])->name('adventure');
+Route::get('/wildlife', [TourController::class, 'wildlife'])->name('wildlife');
+
 Route::get('/tourSingle/{id}', [TourSingleController::class, 'index'])->name('tourSingle');
 Route::get('/destination',[DestinationController::class, 'index' ]);
 Route::get('/destination-detail',[DestinationDetailController::class, 'index']);
@@ -78,13 +93,9 @@ Route::get('/service-list', function () {
     return view('frontend.serviceList');
 });
 
-Route::get('/gallery', function () {
-    return view('frontend.gallery');
-});
 
-Route::get('/contact', function () { return view('frontend.contactus'); });
-//send message to admin (both user and unregistered user can send message)
-Route::post('/send-message', [ContactAdminController::class, 'sendMessage'])->name('send.message');
+
+
 
 Route::get('/blog', function () {
     return view('frontend.blog');
