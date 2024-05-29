@@ -49,9 +49,10 @@ Route::get('generalDestination/tour', [TourController::class, 'generalDestinatio
 Route::get('gallery/tour', [TourController::class, 'gallery'])->name('gallery.tour');
 Route::get('topDestination/tour', [TourController::class, 'topDestination'])->name('topDestination.tour');
 
-Route::get('/contact', function () { return view('frontend.contactus'); });
+// Route::get('/contact', function () { return view('frontend.contactus'); });
+Route::get('/contactus/{id}' , [ContactAdminController::class, 'sendMessage'])->name('sendMessageToAdmin');
 //send message to admin (both user and unregistered user can send message)
-Route::post('/send-message', [ContactAdminController::class, 'sendMessage'])->name('send.message');
+Route::post('/contactus/submit', [ContactAdminController::class, 'submitMessageBtn'])->name('send.message');
 
 //Destination Types routes
 Route::get('/hiking', [TourController::class, 'hiking'])->name('hiking');
@@ -82,35 +83,33 @@ Route::put('tourGuide/updateForm/{id}', [TGController::class, 'updateBookingForm
 
 
 
-Route::get('/faq', function () {
-    return view('frontend.faq');
-});
+// Route::get('/faq', function () {
+//     return view('frontend.faq');
+// });
 
-Route::get('/service', function () {
-    return view('frontend.service');
-});
-Route::get('/service-list', function () {
-    return view('frontend.serviceList');
-});
+// Route::get('/service', function () {
+//     return view('frontend.service');
+// });
+// Route::get('/service-list', function () {
+//     return view('frontend.serviceList');
+// });
+// Route::get('/blog', function () {
+//     return view('frontend.blog');
+// });
+// Route::get('/blog-detail', function () {
+//     return view('frontend.blogDetail');
+// });
 
 
-
-
-
-Route::get('/blog', function () {
-    return view('frontend.blog');
-});
-Route::get('/blog-detail', function () {
-    return view('frontend.blogDetail');
-});
-
+//tester route to check my working view
 Route::get('/test', function () {
-    return view('frontend.test');
+    return view('frontend.sendMessage');
 });
 
 
-
-
+// Universal Message Sending
+Route::get('send-message/{id}', [TourGuideController::class, 'sendReply'])->name('sendMessagePage');
+Route::post('send-message', [TourGuideController::class, 'universalMessageSending'])->name('universalMessageSending');
 
 
 Route::controller(AuthController::class)->group(function () {
@@ -124,6 +123,10 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 
+
+
+
+
 //Normal User Routes list
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
@@ -131,6 +134,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::put('user/dashboard/edit/{id}', [UserController::class, 'updateProfile'])->name('user.profile.update');
 
     Route::get('user/messages', [UserController::class, 'messages'])->name('user.messages');
+    Route::get('user/sendReply/{id}' , [TourGuideController::class , 'sendReply'])->name('user.messages.sendReply');
     Route::delete('user/messages/delete/{id}', [UserController::class, 'deleteMessage'])->name('user.messages.delete');
 
     Route::get('user/bookings', [UserController::class, 'bookings'])->name('user.bookings');
@@ -147,6 +151,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::put('admin/dashboard/edit/{id}', [AdminController::class, 'UpdateProfile'])->name('admin.profile.update');
     
     Route::get('admin/messages', [AdminController::class, 'messages'])->name('admin.messages');
+    Route::get('admin/sendReply/{id}' , [TourGuideController::class , 'sendReply'])->name('admin.messages.sendReply');
     Route::delete('admin/messages/delete/{id}', [AdminController::class, 'deleteMessage'])->name('admin.messages.delete');
 
     Route::get('admin/places' , [PlacesController::class , 'index'])->name('admin.places') ;
@@ -183,6 +188,7 @@ Route::middleware(['auth', 'user-access:tourGuide'])->group(function () {
     Route::put('tourGuide/dashboard/edit/{id}', [TourGuideController::class, 'updateProfile'])->name('tourGuide.profile.update');
 
     Route::get('tourGuide/messages', [TourGuideController::class, 'messages'])->name('tourGuide.messages');
+    Route::get('tourGuide/sendReply/{id}' , [TourGuideController::class , 'sendReply'])->name('tourGuide.messages.sendReply');
     Route::delete('tourGuide/messages/delete/{id}', [TourGuideController::class, 'deleteMessage'])->name('tourGuide.messages.delete');
     //places showing in tour guide dashboard
     // -------------------------------------

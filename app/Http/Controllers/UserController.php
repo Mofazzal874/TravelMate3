@@ -68,7 +68,7 @@ class UserController extends Controller
     public function messages()
     {
         // Retrieve messages where the recipient role is admin
-        $messages = Message::where('recipient_role', 'user')->get();
+        $messages = Message::where('recipient_id', auth()->user()->id)->get();
 
         // Pass the messages data to the view
         return view('user.messages.index', compact('messages'));

@@ -161,7 +161,7 @@
                                     <div class="why-us-icon">
                                         <i class="icon-flag theme"></i>
                                     </div>
-                                    <h4><a href="{{ url('/contact') }}">Tell Us Where You want To go</a></h4>
+                                    <h4><a href="{{ route('sendMessageToAdmin' , 1) }}">Tell Us Where You want To go</a></h4>
                                     <p class="mb-0">Tell us about the place that you want to visit..If the destination doesn't exist in the website , we'll shortly add it..</p>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                     <div class="why-us-icon">
                                         <i class="icon-location-pin theme"></i>
                                     </div>
-                                    <h4><a href="{{ url('/contact') }}">Share Your Travel Locations</a></h4>
+                                    <h4><a href="{{ route('sendMessageToAdmin' , 1) }}">Share Your Travel Locations</a></h4>
                                     <p class="mb-0">Tell a descriptive details about your destination location and you location.</p>
                                 </div>
                             </div>
@@ -183,7 +183,7 @@
                                     <div class="why-us-icon">
                                         <i class="icon-directions theme"></i>
                                     </div>
-                                    <h4><a href="{{ url('/contact') }}">Share Your Travel Preference</a></h4>
+                                    <h4><a href="{{route('sendMessageToAdmin' , 1) }}">Share Your Travel Preference</a></h4>
                                     <p class="mb-0">Tell us how do you want to travel , How many people you want to travel with , how many days you will be travelling .</p>
                                 </div>
                             </div>
@@ -231,7 +231,7 @@
                                                 <span class="fw-bold"> {{ $destination->minDuration }} Days Tours</span>
                                             </div>
                                         </div>
-                                        <div class="name theme1 mb-1">{{ $destination->name }}</div>
+                                        <div class="name theme1 mb-1"><a href="{{ route('tourSingle', ['id' => $destination->id]) }}" @style('color:#ffbc00;')>{{ $destination->name }}</a></div>
                                         <h3 style="color: white">{{ $destination->country }} </h3>
                                         <div class="rating-main d-flex align-items-center pb-2 d-none d-sm-block ">
                                             <div class="rating">

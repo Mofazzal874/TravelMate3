@@ -75,6 +75,11 @@
             <td>{{ $rs->message }}</td>
             <td>
                 <div class="h-14 pt-5">
+                    @if($rs->sender_id != NULL)
+                    <a href="{{ route('user.messages.sendReply', $rs->sender_id) }}" class="text-blue-800">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </a>
+                    @endif
                     <form action="{{ route('user.messages.delete', $rs->id) }}" method="POST"
                         onsubmit="return confirm('Delete?')" class="float-right text-red-800">
                         @csrf

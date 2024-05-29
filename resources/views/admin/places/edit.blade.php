@@ -103,18 +103,33 @@
                                     @enderror
                                 </div>
                                 <div>
-                                    <label>What Type of Destination is this?</label>
-                                    <input name="placeStatus" type="text" class="input w-full border bg-gray-100   mt-2" placeholder="Input text" value="{{$places->placeStatus}}">
-                                    @error('placeStatus')
-                                    <span class="text-red-600">{{ $message }}</span>
-                                    @enderror
+                                    <label for="placeStatus">What Type of Destination is this?</label>
+                                    <div class="mt-2">
+                                        <select id="placeStatus" name="placeStatus" class="select2 w-full">
+                                            <option value="0" selected>General Destination</option>
+                                            <option value="1">Top Destination</option>
+                                            <option value="2">Best Deal Destination</option>
+                                        </select>
+                                        @error('placeStatus')
+                                        <span id="placeStatusError" class="text-red-600">{{ $message }}</span>
+                                        @enderror 
+                                    </div>
                                 </div>
                                 <div>
-                                    <label>This place is best for </label>
-                                    <input name="placeType" type="text" class="input w-full border bg-gray-100   mt-2" placeholder="Input text" value="{{$places->placeType}}">
-                                    @error('placeType')
-                                    <span class="text-red-600">{{ $message }}</span>
-                                    @enderror
+                                    <label for="placeType">This place is best for</label>
+                                    <div class="mt-2">
+                                        <select name="placeType" id="placeType" class="select2 w-full">
+                                            <option value="Hiking">Hiking</option>
+                                            <option value="bicycling">Bicycling</option>
+                                            <option value="Trekking">Trekking</option>
+                                            <option value="Camping">Camping</option>
+                                            <option value="Wildlife">Wildlife</option>
+                                            <option value="Adventure">Adventure</option>
+                                        </select>
+                                        @error('placeType')
+                                        <span class="text-red-600">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                         </div>

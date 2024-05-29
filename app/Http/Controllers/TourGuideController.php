@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Message;
 use App\Models\TourGuide;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class TourGuideController extends Controller
@@ -15,7 +16,7 @@ class TourGuideController extends Controller
     //
 
     //backend tourGuide functions
-    
+
     //dashboard function is in DashboardController
 
     public function editProfile()
@@ -72,11 +73,19 @@ class TourGuideController extends Controller
     public function messages()
     {
         // Retrieve messages where the recipient role is admin
-        $messages = Message::where('recipient_role', 'tourGuide')->get();
+        $messages = Message::where('recipient_id', auth()->user()->id)->get();
 
         // Pass the messages data to the view
         return view('tourGuide.messages.index', compact('messages'));
     }
+    public function sendReply(String $id)
+    {
+        //unregistered user hoile null sender_id choila zabe , oi khhetre tourGuide shudhu message dekhte parbe ,but reply korte parbe na 
+        $sender_id = auth()->check() ? auth()->user()->id : null;
+        $recipient_id = $id;
+        return view('frontend.sendMessage', compact('sender_id', 'recipient_id'));
+    }
+
     public function deleteMessage(string $id)
     {
 
@@ -86,6 +95,36 @@ class TourGuideController extends Controller
         $message->delete();
         return redirect()->route('tourGuide.messages')->with('success', 'Message deleted successfully.');
     }
+    public function universalMessageSending(Request $request)
+    {
+        $validatedData = $request->validate([
+            'sender_id' => 'nullable|string|max:255',
+            'recipient_id' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        // Create a new message instance and save to the database
+        $message = new Message();
+        $message->sender_id = $validatedData['sender_id'] ?? null;
+        $message->recipient_id = $validatedData['recipient_id'];
+
+        // Conditionally set name, email, and phone number based on user authentication
+        if (Auth::check()) {
+            $message->name = Auth::user()->name;
+            $message->email = Auth::user()->email;
+            $message->phone = Auth::user()->phone;
+        } else {
+            $message->name = $request->input('name');
+            $message->email = $request->input('email');
+            $message->phone = $request->input('phone');
+        }
+
+        $message->message = $validatedData['message'];
+        $message->save();
+
+        return redirect()->back()->with('success', 'Message sent successfully.');
+    }
+
     public function bookingAndPricing()
     {
         $tourGuide = TourGuide::where('userId', auth()->user()->id)->first();

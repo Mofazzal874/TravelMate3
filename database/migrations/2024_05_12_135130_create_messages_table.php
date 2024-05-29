@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->text('message');
-            $table->string('recipient_role'); // Add the recipient_role column
             $table->timestamps();
         });
     }

@@ -1,8 +1,8 @@
 @extends('frontend.layouts.main')
 
 @section('main-container')
-    <section class="breadcrumb-main pb-20 pt-14" style="background-image: url(frontend/images/bg/bg1.jpg);">
-        <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url(frontend/images/shape8.png);"></div>
+    <section class="breadcrumb-main pb-20 pt-14" style="background-image: url({{asset('frontend/images/bg/bg1.jpg')}});">
+        <div class="section-shape section-shape1 top-inherit bottom-0" style="background-image: url({{asset('frontend/images/shape8.png')}});"></div>
         <div class="breadcrumb-outer">
             <div class="container">
                 <div class="breadcrumb-content text-center">
@@ -61,20 +61,20 @@
         </div>
     </section>
 
-    <section class="discount-action pt-0" style="background-image:url(frontend/images/section-bg1.png); background-position:center;">
+    <section class="discount-action pt-0" style="background-image:url({{asset('frontend/images/section-bg1.png')}}); background-position:center;">
         <div class="container">
             <div class="call-banner rounded pt-10 pb-14">
                 <div class="call-banner-inner w-75 mx-auto text-center px-5">
                     <div class="trend-content-main">
                         <div class="trend-content mb-5 pb-2 px-5">
                             <h5 class="mb-1 theme">Love Where You're Going</h5>
-                            <h2><a href="detail-fullwidth.html/index.html">Explore Your Life, <span class="theme1"> Travel Where You Want!</span></a></h2>
+                            <h2><a href="{{route('home')}}">Explore Your Life, <span class="theme1"> Travel Where You Want!</span></a></h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div class="video-button text-center position-relative">
                             <div class="call-button text-center">
                                 <button type="button" class="play-btn js-video-button" data-video-id="152879427" data-channel="vimeo">
-                                    <a href="{{ url('/tour') }}">Explore</a>
+                                    <a href="{{ route('allDestination') }}">Explore</a>
                                 </button>
                             </div>
                             <div class="video-figure"></div>
@@ -84,6 +84,6 @@
             </div>
         </div>
         <div class="white-overlay"></div>
-        <div class="section-shape top-inherit bottom-0" style="background-image: url(frontend/images/shape6.png);"></div>
+        <div class="section-shape top-inherit bottom-0" style="background-image: url({{asset('frontend/images/shape6.png')}});"></div>
     </section>
 @endsection

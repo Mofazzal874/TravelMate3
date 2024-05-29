@@ -22,7 +22,6 @@ class Message extends Model
         'email',
         'phone',
         'message',
-        'recipient_role',
     ];
 
     /**

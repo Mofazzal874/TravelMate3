@@ -3,7 +3,7 @@
             <div class="container d-flex align-items-center justify-content-between">
                 <div class="links">
                     <ul>
-                        <li><a href="#" class="white"><i class="icon-calendar white"></i> Tuesday, May 16,
+                        <li><a href="#" class="white"><i class="icon-calendar white"></i> Tuesday, May 26,
                                 2024</a>
                         </li>
                         <li><a href="#" class="white"><i class="icon-location-pin white"></i> Khulna, Bangladesh</a>
@@ -51,11 +51,11 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ route('tourGuide') }}">TourGuides</a></li>
                                         <li><a href="{{ route('gallery.tour')}}">Gallery</a></li>
-                                        <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+                                        <li><a href="{{ route('sendMessageToAdmin' , 1) }}">Contact Us</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('topDestination.tour') }}">Top Picks</a></li>
-                                <li><a href="{{ url('/contact') }}">Contact</a></li>
+                                <li><a href="{{ route('sendMessageToAdmin' , 1)}}">Contact</a></li>
 
                             </ul>
                         </div>

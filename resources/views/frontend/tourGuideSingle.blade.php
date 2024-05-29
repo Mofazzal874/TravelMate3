@@ -198,6 +198,11 @@
 
                 <a href="{{ route('bookTourGuide', ['id' => $tourGuide->id]) }}" class="nir-btn">Book Now</a>
             </div>
+            <div class="form-btn mt-2">
+                {{-- this is a universal button..registered /unregistered both can open and send messages --}}
+                <a href="{{ route('sendMessagePage', ['id' => $tourGuide->userId]) }}" class="nir-btn">Send Message</a>
+            </div>
+
         </div>
         <section class="discount-action pt-8 pb-8"
             style="background-image: url({{ asset('frontend/images/section-bg1.png') }}); background-position: center;">

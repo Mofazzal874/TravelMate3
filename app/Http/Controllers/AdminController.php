@@ -68,8 +68,7 @@ class AdminController extends Controller
     public function messages()
     {
         // Retrieve messages where the recipient role is admin
-        $messages = Message::where('recipient_role', 'admin')->get();
-
+        $messages = Message::where('recipient_id', auth()->user()->id)->get();
         // Pass the messages data to the view
         return view('admin.messages.index', compact('messages'));
     }

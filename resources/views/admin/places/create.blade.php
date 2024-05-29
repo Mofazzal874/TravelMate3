@@ -116,13 +116,11 @@
                                     <label for="placeType">This place is best for</label>
                                     <div class="mt-2">
                                         <select name="placeType" id="placeType" class="select2 w-full">
-                                            <option value="hiking">Hiking</option>
+                                            <option value="Hiking">Hiking</option>
                                             <option value="bicycling">Bicycling</option>
-                                            <option value="treking">Treking</option>
-                                            <option value="camping">Camping</option>
-                                            <option value="wildlife">Wildlife</option>
-                                            <option value="Historical">Historical</option>
-                                            <option value="Religious">Religious</option>
+                                            <option value="Trekking">Trekking</option>
+                                            <option value="Camping">Camping</option>
+                                            <option value="Wildlife">Wildlife</option>
                                             <option value="Adventure">Adventure</option>
                                         </select>
                                         @error('placeType')
