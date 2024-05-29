@@ -1,6 +1,6 @@
 @extends('layouts.userLayout')
  
-@section('title', 'Profile of $profile->name')
+@section('title', 'Dasboard')
  
 @section('contents')
 <head>

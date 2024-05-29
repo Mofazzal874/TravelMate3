@@ -1,6 +1,6 @@
 @extends('layouts.tourGuideLayout')
  
-@section('title', 'Profile of $profile->name')
+@section('title', 'Dashboard')
  
 @section('contents')
 <head>

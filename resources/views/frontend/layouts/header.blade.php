@@ -32,7 +32,9 @@
 
                         <div class="navbar-header">
                             <a class="navbar-brand" href="{{route('home')}}">
-                                <img src="{{ url('travelMateLogo') }}" alt="image">
+                                {{-- <img src="{{ asset('frontend/images/icons/compass-icon-vector.png')}}" @style('width:46px; height:46px') alt="image"> --}}
+                                <img src="{{ asset('frontend/images/icons/travel2.png')}}" @style('width:216px; height:46px') alt="image">
+
                             </a>
                         </div>
 

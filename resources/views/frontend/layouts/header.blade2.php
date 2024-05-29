@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yields('title') </title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{url('frontend/images/favicon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/images/favicon.png')}}">
 
     <link href="{{url('frontend/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 

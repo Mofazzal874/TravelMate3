@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4 pe-4">
                     <div class="footer-about">
-                        <img src="{{asset('frontend/images/logo-white.png') }}" alt>
+                        <img src="{{asset('frontend/images/icons/Travel-white.png') }}" alt>
                         <p class="mt-3 mb-3 white">
                             <p><strong>Discover-Connect-Explore</strong></p>
                         </p>
