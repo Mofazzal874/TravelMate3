@@ -20,18 +20,36 @@
 ## Project Overview
 
 ### Database Schema Diagram
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/6e0253b2-51f8-4b0c-8299-ec879abdf9ec)
+
 ### Main Website
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/c385b8a4-3343-438c-b29d-d948e3976077)
 ### Places
+![screenshot-127 0 0 1_8000-2024 05 31-17_24_25](https://github.com/Mofazzal874/TravelMate3/assets/35369040/21276486-401f-4f7f-a114-256544023b87)
+
 ### TourGuides 
+![screenshot-127 0 0 1_8000-2024 05 31-17_30_43](https://github.com/Mofazzal874/TravelMate3/assets/35369040/4b7c9f2a-aab2-45a2-9cce-ef4c144bd6a3)
 
 ### Booking
 
+![screenshot-127 0 0 1_8000-2024 05 31-17_31_47](https://github.com/Mofazzal874/TravelMate3/assets/35369040/da5f0cfe-d7da-4660-aa34-888cceaf5724)
 
 ## Dashboard Panel for Admin
 
+![screenshot-127 0 0 1_8000-2024 05 31-17_34_39](https://github.com/Mofazzal874/TravelMate3/assets/35369040/b0b669d5-6bff-4842-bf0b-eb2ad8bf2232)
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/62ea0c0a-6b18-4a7d-a12f-a46a99edc72e)
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/44a6d9c6-d781-40c9-b802-7f590065fc54)
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/1ff893af-5dbd-415d-9aab-f1aed176b089)
 ## Dashboard panel for tourGuides
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/47eae2fe-8447-4318-a1b3-5feaef40d9a8)
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/37830f4a-3124-478b-be0b-739dfffa6482)
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/ec224e5e-0652-4af9-b18e-75c48bc15ce7)
+
+
 
 ## Dashboard for User
+![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/d557bd81-9a94-428e-b3a1-2e3dc153bf65)
+
 
 
 ## Installation
