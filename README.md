@@ -18,6 +18,11 @@
 
 
 ## Project Overview
+**N.B**
+    ```
+    If you're here to copy the project for your project submission , "May God help you, brother😂😎😥"
+    ```
+
 
 ### Database Schema Diagram
 ![image](https://github.com/Mofazzal874/TravelMate3/assets/35369040/6e0253b2-51f8-4b0c-8299-ec879abdf9ec)
@@ -55,11 +60,6 @@
 ## Installation
 
 To run this project locally, follow these steps:
-
-0.**N.B**
-    ```
-    If you're here to copy the project for your project submission , "May God help you, brother😂😎😥"
-    ```
 
 1. **Clone the repository**
    ```bash
