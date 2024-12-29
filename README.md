@@ -18,7 +18,7 @@
 
 
 ## Project Overview
- ### If you're here to copy the project for your project submission , "May God help you, brother😂😎😥"
+ ### If you're here to copy the project for your project submission , "May God help you, brother😥"
 
 ### video demo: https://youtu.be/FQN-dJytN3k
 ### Database Schema Diagram
